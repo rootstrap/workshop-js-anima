@@ -1,41 +1,200 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>JS workshop</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
-		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
-		<link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
+	<title>JS workshop</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
+	<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
 
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+			<!-- Title -->
+			<section>
+				<h1>JavaScript básico</h1>
+			</section>
+
+			<!-- Schedule -->
+			<section>
+				<h3>Agenda</h3>
+				<ol>
+					<li>
+						Variables
+					</li>
+					<li>
+						Valores
+					</li>
+					<li>
+						Operadores
+					</li>
+					<li>
+						Expresiones y declaraciones
+					</li>
+					<li>
+						Condicionales
+					</li>
+					<li>
+						Loops
+					</li>
+					<li>
+						Funciones
+					</li>
+				</ol>
+			</section>
+
+			<!-- Variables -->
+			<section>
+				<h3>Variables</h3>
+				<section>
+					Las variables son contenedores que nos permiten almacenar valores.
+					Para declarar una variable podemos utilizar la palabra clave <b>let</b>.
+					<pre><code data-trim class="lang-javascript">
+						let myVariable;
+					</code></pre>
+				</section>
+
+				<section>
+					También podemos asignarle un valor al momento de su declaración.
+					<pre><code data-trim class="lang-javascript">
+						let myVariable = "a value";
+					</code></pre>
+				</section>
+
+				<section>
+					JavaScript es un lenguaje dinámico y de tipado flexible.
+					<br>
+					Las variables en JavaScript no están asociadas directamente con ningún tipo de valor en particular, y a
+					cualquier variable se le pueden asignar (y reasignar) valores de todos los tipos.
+					<pre><code data-trim class="lang-javascript">
+						let foo = 42;    // foo es un número
+						foo     = 'bar'; // foo es un string
+						foo     = true;  // foo es un boolean
+					</code></pre>
+				</section>
+
+				<section>
+					Además de variables, podemos definir constantes.
+					<br>
+					A diferencia de las variables, una constante no puede cambiar su valor posteriormente, por lo que se debe
+					especificar su valor en la misma sentencia en la que se declara.
+					<pre><code data-trim class="lang-javascript">
+						const foo = 7; // foo es una constante con el número 7
+						foo = 20;      // lanzará un error
+					</code></pre>
+				</section>
+			</section>
+
+			<!-- Values -->
+			<section>
+				<h3>Valores</h3>
+
+				<section>
+					Todos los lenguajes de programación tienen estructuras de datos integradas, pero éstas a menudo difieren de un
+					lenguaje a otro.
+					<br>
+					JavaScript posee 6 <a href="https://developer.mozilla.org/es/docs/Glossary/Primitivo">tipos de datos
+						primitivos</a>
+				</section>
+
+				<section>
+					<h5><a href="https://developer.mozilla.org/es/docs/Glossary/undefined">Undefined</a></h5>
+					Una variable a la que no se le ha asignado un valor tiene el valor indefinido
+					<pre><code data-trim class="lang-javascript">
+						let myVariable;
+						console.log(myVariable); # imprime undefined
+					</code></pre>
+				</section>
+
+				<section>
+					<h5><a href="https://developer.mozilla.org/es/docs/Glossary/Boolean">Boolean</a></h5>
+					Representa una entidad lógica y puede tener dos valores: verdadero y falso
+					<pre><code data-trim class="lang-javascript">
+						let myVariable1 = true;
+						console.log(myVariable1); # imprime el valor booleano true
+
+						let myVariable2 = false;
+						console.log(myVariable2); # imprime el valor booleano false
+					</code></pre>
+				</section>
+
+				<section>
+					<h5><a href="https://developer.mozilla.org/es/docs/Glossary/Numero">Number</a></h5>
+					Números entre <b>-(253 − 1)</b> y <b>253 − 1</b>.</br>
+					Adicionalmente, JS cuenta con 3 tipos simbólicos: <b>+Infinity</b>, <b>-Infinity</b>, y <b>NaN</b> ("Not a
+					Number").
+					<pre><code data-trim class="lang-javascript">
+						let myVariable = 7;
+						console.log(myVariable); # imprime el número 7
+					</code></pre>
+				</section>
+
+				<section>
+					<h5><a href="https://developer.mozilla.org/es/docs/Glossary/String">String</a></h5>
+					Sirve para representar una cadena de caracteres. La longitud del string está dada por la cantidad de elementos
+					que lo componen.
+					<pre><code data-trim class="lang-javascript">
+						let myVariable = "Hola mundo!";
+						console.log(myVariable); # imprime Hola mundo!
+					</code></pre>
+				</section>
+
+				<section>
+					<h5><a href="https://developer.mozilla.org/en-US/docs/Glossary/BigInt">BigInt</a></h5>
+					Un BigInt se crea agregando n al final de un número entero o llamando al constructor.
+					Nos permite representar y operar con números enteros largos, que excedan los límites de Number.
+					<pre><code data-trim class="lang-javascript">
+						let hugeNumber = BigInt(9007199254740991);
+						console.log(hugeNumber); // imprime 9007199254740991n
+						
+						let alsoHuge = 2n ** 53n;
+						console.log(alsoHuge); // imprime 9007199254740992n
+					</code></pre>
+				</section>
+
+				<section>
+					<h5><a href="https://developer.mozilla.org/es/docs/Glossary/Symbol">Symbol</a></h5>
+					Valor único e inmutable que puede ser usado como clave para acceder a objetos.
+					<pre><code data-trim class="lang-javascript">
+						let Sym1 = Symbol("Sym");
+						console.log(Sym1); // imprime Symbol(Sym)
+					</code></pre>
+				</section>
+
+				<section>
+					Existe además un tipo primitivo especial, llamado <a
+						href="https://developer.mozilla.org/en-US/docs/Glossary/Null">null</a>. </br>
+					Este valor se utiliza para representar la no existencia o invalidez de algo, generalmente de manera
+					intencional.
+				</section>
+			</section>
 		</div>
+	</div>
 
-		<script src="../reveal.js/dist/reveal.js"></script>
-		<script src="../reveal.js/plugin/notes/notes.js"></script>
-		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
-		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="../reveal.js/dist/reveal.js"></script>
+	<script src="../reveal.js/plugin/notes/notes.js"></script>
+	<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+	<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
