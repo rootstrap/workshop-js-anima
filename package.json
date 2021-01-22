@@ -2,7 +2,7 @@
   "name": "workshop-js-anima",
   "version": "0.1.0",
   "description": "Slides for JS workshop",
-  "main": "index.html",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
