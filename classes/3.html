@@ -55,11 +55,11 @@
           internamente.
           <pre><code data-trim class="lang-javascript">
             function greeting(name) {
-              alert('Hello ' + name);
+              alert('Hola ' + name);
             };
 
             function processUserInput(callback) {
-              var name = prompt('Please enter your name.');
+              var name = prompt('Por favor ingresa tu nombre');
               callback(name);
             };
 
@@ -76,7 +76,7 @@
           <pre><code data-trim class="lang-javascript">
             function callback(event) {
               event.preventDefault();
-              console.log("User has clicked on the button!");
+              console.log("El usuario hizo click en el botón!");
             };
 
             const button = document.queryselector("#callback-btn")
@@ -116,11 +116,13 @@
           <h3>setInterval</h3>
           Recibe como primer parámetro la función callback, y como segundo parámetro el tiempo que debe esperar entre cada invocación a la función (expresado en milisegundos).
           <pre><code data-trim class="lang-javascript">
-            function myFunction() {
-              console.log("Han pasado 3 segundos!");
+            let counter = 0;
+            function incrementCounter() {
+              counter = counter + 1;
+              console.log('Esta función se ejecutó ' + counter + ' veces!');
             };
 
-            setTimeout(myFunction, 3000);
+            setInterval(incrementCounter, 1000);
           </code></pre>
           <aside class="notes">
             A diferencia del setTimeout, setInterval continúa invocando a la función callback cada vez que se transcurre el tiempo especificado (en este caso 3 segundos)
