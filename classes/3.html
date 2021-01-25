@@ -1,41 +1,174 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>JS workshop</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
-		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
-		<link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
+  <title>JS workshop</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
 
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+</head>
 
-		<script src="../reveal.js/dist/reveal.js"></script>
-		<script src="../reveal.js/plugin/notes/notes.js"></script>
-		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
-		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+<body>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- Title -->
+      <section>
+        <h1>JavaScript asincrónico</h1>
+      </section>
+
+      <!-- Schedule -->
+      <section>
+        <h3>Agenda</h3>
+        <ol>
+          <li>
+            Funciones callback
+          </li>
+          <li>
+            setTimeout - setInterval
+          </li>
+          <li>
+            <!-- Maybe fetch API should be after promises -->
+            AJAX, XHR y API fetch
+          </li>
+          <li>
+            Promesas
+          </li>
+          <li>
+            Async/await
+          </li>
+        </ol>
+      </section>
+
+      <!-- Callbacks -->
+      <section>
+        <h3>Callbacks</h3>
+        <section>
+          Una función callback es aquella que es pasada por parámetro a otra función, para luego ser invocada
+          internamente.
+          <pre><code data-trim class="lang-javascript">
+            function greeting(name) {
+              alert('Hello ' + name);
+            };
+
+            function processUserInput(callback) {
+              var name = prompt('Please enter your name.');
+              callback(name);
+            };
+
+            processUserInput(greeting);
+          </code></pre>
+          <aside class="notes">
+            Al utilizar la palabra reservada function, podemos declarar funciones, pero éstas no son invocadas en ese momento sino que se deben invocar de manera manual utilizando el nombre de la función declarada y agregandole los parámetros entre paréntesis (o paréntesis vacíos si no espera parámetros ej: nombreFuncion()).
+            <br>
+            Notar en el ejemplo que la función processUserInput recibe greeting sin los paréntesis, es decir que no la estamos invocando.
+          </aside>
+        </section>
+        <section>
+          Podemos manejar eventos del DOM utilizando callbacks.
+          <pre><code data-trim class="lang-javascript">
+            function callback(event) {
+              event.preventDefault();
+              console.log("User has clicked on the button!");
+            };
+
+            const button = document.queryselector("#callback-btn")
+            
+            button.addEventListener("click", callback);
+          </code></pre>
+
+          <aside class="notes">
+            Al manejar eventos del DOM utilizando la API document, la función que utilizamos como callback siempre recibe como parámetro el evento que está manejando, el cuál en este caso es el click.
+            <br>
+            En nuestra función podemos interacutar con ese evento para por ejemplo evitar una redirección u obtener el elemento que lanzó el evento.
+          </aside>
+        </section>
+      </section>
+
+      <!-- setTimeout - setInterval -->
+      <section>
+        <section>
+          <h3>setTimeout - setInterval</h3>
+          Son funciones que nos provee JavaScript y nos permiten ejecutar funciones de manera asincrónica. Ambas reciben por parámetro la función (callback) que deben ejecutar.
+        </section>
+        <section>
+          <h3>setTimeout</h3>
+          Recibe como primer parámetro la función callback, y como segundo parámetro el tiempo que debe esperar para realizar la invocación a la función (expresado en milisegundos).
+          <pre><code data-trim class="lang-javascript">
+            function myFunction() {
+              console.log("Han pasado 3 segundos!");
+            };
+
+            setTimeout(myFunction, 3000);
+          </code></pre>
+          <aside class="notes">
+            La función callback es invocada una única vez, al transcurrir el tiempo especificado.
+          </aside>
+        </section>
+        <section>
+          <h3>setInterval</h3>
+          Recibe como primer parámetro la función callback, y como segundo parámetro el tiempo que debe esperar entre cada invocación a la función (expresado en milisegundos).
+          <pre><code data-trim class="lang-javascript">
+            function myFunction() {
+              console.log("Han pasado 3 segundos!");
+            };
+
+            setTimeout(myFunction, 3000);
+          </code></pre>
+          <aside class="notes">
+            A diferencia del setTimeout, setInterval continúa invocando a la función callback cada vez que se transcurre el tiempo especificado (en este caso 3 segundos)
+          </aside>
+        </section>
+        <section>
+          <h3>setTimeout - setInterval</h3>
+          Puede suceder que necesitemos que nuestro timer no se siga ejecutando. Para ello podemos utilizar la función <b>clearTimeout</b> o <b>clearInterval</b>.
+          <pre><code data-trim class="lang-javascript">
+            let counter = 0;
+            let timer;
+
+            function incrementCounter() {
+              counter = counter + 1;
+              checkCount();
+            };
+
+            function checkCount() {
+              if (counter == 10) {
+                clearInterval(timer);
+              };
+            };
+
+            timer = setInterval(incrementCounter, 1000);
+          </code></pre>
+          <aside class="notes">
+            En el ejemplo las variables counter y timer son definidas antes de las funciones. Esto es para que su scope (alcence) permite utilizarlas tanto dentro como fuera de las funciones.
+          </aside>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
 </html>
