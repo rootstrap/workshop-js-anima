@@ -59,14 +59,14 @@
           Las variables son contenedores que nos permiten almacenar valores.
           Para declarar una variable podemos utilizar la palabra clave <b>let</b>.
           <pre><code data-trim class="lang-javascript">
-            let myVariable;
+            let miVariable;
           </code></pre>
         </section>
 
         <section>
           También podemos asignarle un valor al momento de su declaración.
           <pre><code data-trim class="lang-javascript">
-            let myVariable = "a value";
+            let miVariable = "a value";
           </code></pre>
         </section>
 
@@ -118,8 +118,8 @@
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/undefined">Undefined</a></h5>
           Una variable a la que no se le ha asignado un valor tiene el valor indefinido
           <pre><code data-trim class="lang-javascript">
-            let myVariable;
-            console.log(myVariable); // imprime undefined
+            let miVariable;
+            console.log(miVariable); // imprime undefined
           </code></pre>
         </section>
 
@@ -127,11 +127,11 @@
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/Boolean">Boolean</a></h5>
           Representa una entidad lógica y puede tener dos valores: verdadero y falso
           <pre><code data-trim class="lang-javascript">
-            let myVariable1 = true;
-            console.log(myVariable1); // imprime el valor booleano true
+            let miVariable1 = true;
+            console.log(miVariable1); // imprime el valor booleano true
 
-            let myVariable2 = false;
-            console.log(myVariable2); // imprime el valor booleano false
+            let miVariable2 = false;
+            console.log(miVariable2); // imprime el valor booleano false
           </code></pre>
         </section>
 
@@ -140,8 +140,8 @@
           Números entre <b>-(253 − 1)</b> y <b>253 − 1</b>.</br>
           Adicionalmente, JS cuenta con 3 tipos simbólicos: <b>+Infinity</b>, <b>-Infinity</b>, y <b>NaN</b> ("Not a Number").
           <pre><code data-trim class="lang-javascript">
-            let myVariable = 7;
-            console.log(myVariable); // imprime el número 7
+            let miVariable = 7;
+            console.log(miVariable); // imprime el número 7
           </code></pre>
         </section>
 
@@ -149,8 +149,8 @@
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/String">String</a></h5>
           Sirve para representar una cadena de caracteres. La longitud del string está dada por la cantidad de elementos que lo componen.
           <pre><code data-trim class="lang-javascript">
-            let myVariable = "Hola mundo!";
-            console.log(myVariable); // imprime Hola mundo!
+            let miVariable = "Hola mundo!";
+            console.log(miVariable); // imprime Hola mundo!
           </code></pre>
         </section>
 
@@ -166,16 +166,16 @@
           En JavaScript, un objeto es una estructura de datos que almacena claves y valores.
           <pre><code data-trim class="lang-javascript">
             // Opción 1
-            let myCar   = new Object();
-            myCar.make  = 'Ford';
-            myCar.model = 'Mustang';
-            myCar.year  = 1969;
+            let auto    = new Object();
+            auto.marca  = 'Ford';
+            auto.modelo = 'Mustang';
+            auto.año    = 1969;
 
             // Opción 2
-            let myCar = {
-              make:  'Ford',
-              model: 'Mustang',
-              year:  1969
+            let auto = {
+              marca:  'Ford',
+              modelo: 'Mustang',
+              año:    1969
             };
           </code></pre>
 
@@ -192,10 +192,10 @@
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects">Objetos</a></h5>
           Para acceder a los valores del objeto, lo podemos hacer utilizando <b>objecto.nombre_atributo</b> ó <b>objecto['nombre_atributo']</b>
           <pre><code data-trim class="lang-javascript">
-            console.log(myCar.make); // Imprime 'Ford'
-            console.log(myCar['make']); // Imprime 'Ford'
+            console.log(auto.marca); // Imprime 'Ford'
+            console.log(auto['marca']); // Imprime 'Ford'
 
-            console.log(myCar['color']); // Si la clave no existe, imprime undefined
+            console.log(auto['color']); // Si la clave no existe, imprime undefined
           </code></pre>
         </section>
 
@@ -203,9 +203,9 @@
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Arreglos</a></h5>
           Los arreglos son estructuras ordenadas que representan listas o collecciones de valores.
           <pre><code data-trim class="lang-javascript">
-            let fruits = ['Apple', 'Banana']
+            let frutas = ['Manzana', 'Banana']
 
-            console.log(fruits) // Imprime ['Apple', 'Banana']
+            console.log(frutas) // Imprime ['Manzana', 'Banana']
           </code></pre>
         </section>
         
@@ -217,14 +217,14 @@
           <br>
           <b>IMPORTANTE:</b> El primer elemento ocupa la posición 0.
           <pre><code data-trim class="lang-javascript">
-            let myArray = ['Apple', 'Banana', 1, false]
+            let arreglo = ['Manzana', 'Banana', 1, false]
 
-            console.log(myArray[0]) // Imprime 'Apple'
-            console.log(myArray[1]) // Imprime 'Banana'
-            console.log(myArray[2]) // Imprime 1
-            console.log(myArray[3]) // Imprime false
+            console.log(arreglo[0]) // Imprime 'Manzana'
+            console.log(arreglo[1]) // Imprime 'Banana'
+            console.log(arreglo[2]) // Imprime 1
+            console.log(arreglo[3]) // Imprime false
 
-            console.log(myArray.length) // Imprime 4
+            console.log(arreglo.length) // Imprime 4
           </code></pre>
 
           <aside class="notes">
