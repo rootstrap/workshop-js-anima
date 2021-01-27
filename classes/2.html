@@ -36,7 +36,7 @@
             Valores y estructuras de datos
           </li>
           <li>
-            Operadores
+            Operaciones aritméticas
           </li>
           <li>
             Expresiones y declaraciones
@@ -231,6 +231,81 @@
           <aside class="notes">
             Existe una gran cantidad de funciones que nos permiten reccorer arreglos, borrar o agregar elementos, copiarlos, combinarlos y muchas operaciones más.
           </aside>
+        </section>
+      </section>
+
+      <!-- Arithmetic operatos -->
+      <section>
+        <section>
+          <h4><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">Operaciones aritméticas</a></h5>
+          Como todos los lenguajes de programación, JavaScript permite ejecutar operaciones aritméticas con sus datos.
+
+          <pre><code data-trim class="lang-javascript">
+            2 + 2; // 4
+            2 - 1; // 1
+            3 * 2; // 6
+            4 / 2; // 2
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">Operaciones de asignación</a></h5>
+          Podemos también combinar todas las operaciones aritméticas con asignaciones
+
+          <pre><code data-trim class="lang-javascript">
+            let suma = 2;
+            suma += 2; // suma = suma + 2 // suma = 4
+
+            let resta = 2;
+            resta -= 1; // resta = resta - 1 // suma = 1
+
+            let producto = 3;
+            product *= 2; // producto = producto * 2 // suma = 6
+
+            let division = 4;
+            division /= 2; // division = division / 2 // suma = 2
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#comparison_operators">Comparación</a></h5>
+
+          <pre><code data-trim class="lang-javascript">
+            // Mayor y menor
+            3 > 2; // true
+            3 < 2; // false
+
+            // Mayor o igual y menor o igual
+            4 >= 5; // false
+            4 <= 5; // true
+
+            // Igualdad
+            5 == 5; // true
+            5 != 6; // true
+
+            // Igualdad estricta
+            5 === 5; // true
+            5 !== 5; // false
+
+            5 == '5';  // true
+            5 === '5'; // false
+          </code></pre>
+
+          <aside class="notes">
+            A diferencia de la igualdad convencional (==), la igualdad estricta (===) no solo chequea por el valor del elemento, sino que tambien por su tipo.
+            <br>
+            En el ejemplo utilizando 5 == '5', como la igualdad no chequea tipos devuelve verdadero; pero al utilizar la igualdad estricta, como '5' es un String y 5 un Number la comparación devuelve falso.
+          </aside>
+        </section>
+
+        <section>
+          Tambien podemos relizar ciertas sumas entre distintos tipos de datos, por ejemplo para generar Strings con datos que tenemos en variables.
+
+          <pre><code data-trim class="lang-javascript">
+            let año = 2021;
+
+            'Les deseo un feliz ' + año + '!'; // Les deseo un feliz 2021!
+          </code></pre>
         </section>
       </section>
 
