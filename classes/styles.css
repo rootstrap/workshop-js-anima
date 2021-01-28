@@ -5,3 +5,7 @@
 .small-text {
   font-size: 30px;
 }
+
+.italic {
+  font-style: italic;
+}
