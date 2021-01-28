@@ -257,13 +257,13 @@
 
           <pre>
             <code data-trim class="lang-javascript">
-            if (day == 'Saturday') {
-              console.log('Woohoo')
+            if (dia == 'Sabado') {
+              console.log('Woohoo');
             }
             </code>
           </pre>
           <p>
-            Si el valor de la variable <b>day</b> es 'Saturday' se imprimira el texto
+            Si el valor de la variable <b>dia</b> es "Sabado" se imprimira el texto
             "Woohoo" en pantalla. En caso de no cumplirse la condición, el código no se ejecutara.
           </p>
         </section>
@@ -274,15 +274,15 @@
 
           <pre>
             <code data-trim class="lang-javascript">
-              if (day == 'Saturday') {
-                console.log('Woohoo')
+              if (dia == 'Sabado') {
+                console.log('Woohoo');
               } else {
-                console.log('Ya falta menos!')
+                console.log('Ya falta menos!');
               }
             </code>
           </pre>
           <p>
-            Si el valor de la variable <b>day</b> es distinto a 'Saturday' se imprimira
+            Si el valor de la variable <b>dia</b> es distinto a "Sabado" se imprimira
             "Ya falta menos!" en pantalla.
           </p>
         </section>
@@ -293,18 +293,18 @@
             condición es falsa</p>
           <pre>
             <code data-trim class="lang-javascript">
-             if (day == 'Saturday') {
-               console.log('Woohoo!')
-             } else if (day == 'Monday'){
-                console.log(😬)
+             if (dia == 'Sabado') {
+               console.log('Woohoo!');
+             } else if (day == 'Lunes'){
+                console.log(😬);
              } else {
-                console.log('Ya falta menos!')
+                console.log('Ya falta menos!');
              }
             </code>
           </pre>
           <p class="small-text">
-            Si el valor de la variable <b>day</b> es distinto a 'Saturday' se evaluara el <b>else if</b>. Si el valor de <b>day</b>
-            es igual a 'Monday' se ejecutará el código especificado en el <b>else if</b>. (la sentencia else no sera
+            Si el valor de la variable <b>day</b> es distinto a "Sabado" se evaluara el <b>else if</b>. Si el valor de <b>day</b>
+            es igual a "Lunes" se ejecutará el código especificado en el <b>else if</b>. (la sentencia else no sera
             ejecutada).
           </p>
         </section>
@@ -314,20 +314,20 @@
           <p class="small-text align-left"><b>Switch</b>: especifica bloques alternativos de código a ejecutar.</p>
           <pre>
                 <code data-trim class="lang-javascript">
-                  switch(day) {
-                  case 'Monday':
-                     console.log(🥱🧉☕️)
+                  switch(dia) {
+                  case 'Lunes':
+                     console.log(🥱🧉☕️);
                   break;
-                  case 'Saturday':
-                    console.log(🥳)
+                  case 'Sabado':
+                    console.log(🥳);
                   break;
                   default:
-                    console.log(👩‍💻👨‍💻)
+                    console.log(👩‍💻👨‍💻);
                   }
                 </code>
               </pre>
           <p class="small-text">
-            Para la variable <b>day</b> se evaluan los bloques del switch y se ejecutará el código
+            Para la varible <b>dia</b> se evaluan los bloques del switch y se ejecutará el código
             correspondiente a el caso verdadero. Para el escenario donde ninguna condición se cumple
             se ejecutara el codigo situado en <b>default</b>.
           </p>
