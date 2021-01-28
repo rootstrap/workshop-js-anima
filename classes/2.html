@@ -13,6 +13,7 @@
 
   <!-- Theme used for syntax highlighted code -->
   <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -230,6 +231,106 @@
           <aside class="notes">
             Existe una gran cantidad de funciones que nos permiten reccorer arreglos, borrar o agregar elementos, copiarlos, combinarlos y muchas operaciones más.
           </aside>
+        </section>
+      </section>
+
+      <!-- Condicionales -->
+      <section>
+        <br />
+        <h4>Condicionales</h4>
+        <br />
+        <section>
+          <p>Las declaraciones condicionales nos permiten realizar diferentes acciones basadas en diferentes
+            <b>condiciones</b> y determinaran si el bloque de codigo a continuación es o no ejecutado.
+          </p>
+          <ul>
+            <li>if</li>
+            <li>else</li>
+            <li>else if</li>
+            <li>switch</li>
+          </ul>
+        </section>
+
+        <section>
+          <br>
+          <p class="align-left"><b>If</b>: El código se ejecutara si una condición especificada es verdadera</p>
+
+          <pre>
+            <code data-trim class="lang-javascript">
+            if (dia == 'Sabado') {
+              console.log('Woohoo');
+            }
+            </code>
+          </pre>
+          <p>
+            Si el valor de la variable <b>dia</b> es "Sabado" se imprimira el texto
+            "Woohoo" en pantalla. En caso de no cumplirse la condición, el código no se ejecutara.
+          </p>
+        </section>
+
+        <section>
+          <br>
+          <p class="align-left"><b>Else</b>: se ejecutara si la condición es falsa</p>
+
+          <pre>
+            <code data-trim class="lang-javascript">
+              if (dia == 'Sabado') {
+                console.log('Woohoo');
+              } else {
+                console.log('Ya falta menos!');
+              }
+            </code>
+          </pre>
+          <p>
+            Si el valor de la variable <b>dia</b> es distinto a "Sabado" se imprimira
+            "Ya falta menos!" en pantalla.
+          </p>
+        </section>
+
+        <section>
+          <br>
+          <p class="small-text align-left"><b>Else if</b>: especifica una nueva condición para probar, si la primera
+            condición es falsa</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+             if (dia == 'Sabado') {
+               console.log('Woohoo!');
+             } else if (day == 'Lunes'){
+                console.log(😬);
+             } else {
+                console.log('Ya falta menos!');
+             }
+            </code>
+          </pre>
+          <p class="small-text">
+            Si el valor de la variable <b>day</b> es distinto a "Sabado" se evaluara el <b>else if</b>. Si el valor de <b>day</b>
+            es igual a "Lunes" se ejecutará el código especificado en el <b>else if</b>. (la sentencia else no sera
+            ejecutada).
+          </p>
+        </section>
+
+        <section>
+          <br>
+          <p class="small-text align-left"><b>Switch</b>: especifica bloques alternativos de código a ejecutar.</p>
+          <pre>
+                <code data-trim class="lang-javascript">
+                  switch(dia) {
+                  case 'Lunes':
+                     console.log(🥱🧉☕️);
+                  break;
+                  case 'Sabado':
+                    console.log(🥳);
+                  break;
+                  default:
+                    console.log(👩‍💻👨‍💻);
+                  }
+                </code>
+              </pre>
+          <p class="small-text">
+            Para la variable <b>dia</b> se evaluan los bloques del switch y se ejecutará el código
+            correspondiente a el caso verdadero. Para el escenario donde ninguna condición se cumple
+            se ejecutara el codigo situado en <b>default</b>.
+          </p>
         </section>
       </section>
     </div>
