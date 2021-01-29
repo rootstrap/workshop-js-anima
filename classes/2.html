@@ -36,7 +36,7 @@
             Valores y estructuras de datos
           </li>
           <li>
-            Operadores
+            Operaciones aritméticas
           </li>
           <li>
             Expresiones y declaraciones
@@ -234,6 +234,81 @@
         </section>
       </section>
 
+      <!-- Arithmetic operatos -->
+      <section>
+        <section>
+          <h4><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">Operaciones aritméticas</a></h5>
+          Como todos los lenguajes de programación, JavaScript permite ejecutar operaciones aritméticas con sus datos.
+
+          <pre><code data-trim class="lang-javascript">
+            2 + 2; // 4
+            2 - 1; // 1
+            3 * 2; // 6
+            4 / 2; // 2
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">Operaciones de asignación</a></h5>
+          Podemos también combinar todas las operaciones aritméticas con asignaciones
+
+          <pre><code data-trim class="lang-javascript">
+            let suma = 2;
+            suma += 2; // suma = suma + 2 // suma = 4
+
+            let resta = 2;
+            resta -= 1; // resta = resta - 1 // resta = 1
+
+            let producto = 3;
+            producto *= 2; // producto = producto * 2 // producto = 6
+
+            let division = 4;
+            division /= 2; // division = division / 2 // division = 2
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#comparison_operators">Comparación</a></h5>
+
+          <pre><code data-trim class="lang-javascript">
+            // Mayor y menor
+            3 > 2; // true
+            3 < 2; // false
+
+            // Mayor o igual y menor o igual
+            4 >= 5; // false
+            4 <= 5; // true
+
+            // Igualdad
+            5 == 5; // true
+            5 != 6; // true
+
+            // Igualdad estricta
+            5 === 5; // true
+            5 !== 5; // false
+
+            5 == '5';  // true
+            5 === '5'; // false
+          </code></pre>
+
+          <aside class="notes">
+            A diferencia de la igualdad convencional (==), la igualdad estricta (===) no solo chequea por el valor del elemento, sino que también por su tipo.
+            <br>
+            En el ejemplo utilizando 5 == '5', como la igualdad no chequea tipos devuelve verdadero; pero al utilizar la igualdad estricta, como '5' es un String y 5 un Number la comparación devuelve falso.
+          </aside>
+        </section>
+
+        <section>
+          También podemos realizar ciertas sumas entre distintos tipos de datos, por ejemplo para generar Strings con datos que tenemos en variables.
+
+          <pre><code data-trim class="lang-javascript">
+            let año = 2021;
+
+            'Les deseo un feliz ' + año + '!'; // Les deseo un feliz 2021!
+          </code></pre>
+        </section>
+      </section>
+
       <!-- Condicionales -->
       <section>
         <br />
@@ -241,7 +316,7 @@
         <br />
         <section>
           <p>Las declaraciones condicionales nos permiten realizar diferentes acciones basadas en diferentes
-            <b>condiciones</b> y determinaran si el bloque de codigo a continuación es o no ejecutado.
+            <b>condiciones</b> y determinarán si el bloque de código a continuación es o no ejecutado.
           </p>
           <ul>
             <li>if</li>
@@ -263,7 +338,7 @@
             </code>
           </pre>
           <p>
-            Si el valor de la variable <b>dia</b> es "Sabado" se imprimira el texto
+            Si el valor de la variable <b>dia</b> es "Sabado" se imprimirá el texto
             "Woohoo" en pantalla. En caso de no cumplirse la condición, el código no se ejecutará.
           </p>
         </section>
@@ -282,8 +357,7 @@
             </code>
           </pre>
           <p>
-            Si el valor de la variable <b>dia</b> es distinto a "Sabado" se imprimira
-            "Ya falta menos!" en pantalla.
+            Si el valor de la variable <b>dia</b> es distinto a "Sabado" se imprimirá "Ya falta menos!" en pantalla.
           </p>
         </section>
 
@@ -293,19 +367,17 @@
             condición es falsa</p>
           <pre>
             <code data-trim class="lang-javascript">
-             if (dia == 'Sabado') {
-               console.log('Woohoo!');
-             } else if (day == 'Lunes'){
+              if (dia == 'Sabado') {
+                console.log('Woohoo!');
+              } else if (dia == 'Lunes'){
                 console.log(😬);
-             } else {
+              } else {
                 console.log('Ya falta menos!');
-             }
+              }
             </code>
           </pre>
           <p class="small-text">
-            Si el valor de la variable <b>day</b> es distinto a "Sabado" se evaluara el <b>else if</b>. Si el valor de <b>day</b>
-            es igual a "Lunes" se ejecutará el código especificado en el <b>else if</b>. (la sentencia else no sera
-            ejecutada).
+            Si el valor de la variable <b>dia</b> es distinto a "Sabado" se evaluará el <b>else if</b>. Si el valor de <b>dia</b> es igual a "Lunes" se ejecutará el código especificado en el <b>else if</b>. (la sentencia else no sera ejecutada).
           </p>
         </section>
 
@@ -313,19 +385,19 @@
           <br>
           <p class="small-text align-left"><b>Switch</b>: especifica bloques alternativos de código a ejecutar.</p>
           <pre>
-                <code data-trim class="lang-javascript">
-                  switch(dia) {
-                  case 'Lunes':
-                     console.log(🥱🧉☕️);
-                  break;
-                  case 'Sabado':
-                    console.log(🥳);
-                  break;
-                  default:
-                    console.log(👩‍💻👨‍💻);
-                  }
-                </code>
-              </pre>
+            <code data-trim class="lang-javascript">
+              switch(dia) {
+              case 'Lunes':
+                  console.log(🥱🧉☕️);
+              break;
+              case 'Sabado':
+                console.log(🥳);
+              break;
+              default:
+                console.log(👩‍💻👨‍💻);
+              }
+            </code>
+          </pre>
           <p class="small-text">
             Para la variable <b>dia</b> se evaluan los bloques del switch y se ejecutará el código
             correspondiente a el caso verdadero. Para el escenario donde ninguna condición se cumple
@@ -362,7 +434,7 @@
           <pre>
             <code data-trim class="lang-javascript">
               const frutas = ['frutilla', 'manzana', 'banana', 'naranja'];
-              const i;
+              let i;
               for (i = 0; i < frutas.length; i++) {
                 console.log(frutas[i]);
               }
@@ -405,11 +477,11 @@
             Cuando esta condición sea falsa, el código no se ejecutará nuevamente.
           </p>
           <pre>
-              <code data-trim class="lang-javascript">
-                while (condicion) {
-                  // codigo a ser ejecutado
-                }
-                </code>
+            <code data-trim class="lang-javascript">
+              while (condicion) {
+                // codigo a ser ejecutado
+              }
+            </code>
           </pre>
         </section>
 
@@ -417,7 +489,7 @@
           <p class="small-text align-left">Pasos en la iteración:</p>
           <pre>
             <code data-trim class="lang-javascript">
-              const i = 1;
+              let i = 1;
               while (i < 10) {
                 console.log("El número es:" + i);
                 i++;
