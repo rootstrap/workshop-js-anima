@@ -153,6 +153,68 @@
           </aside>
         </section>
       </section>
+      
+      <!-- AJAX, XHR y API fetch -->
+      <section>
+        <section>
+          <h3>AJAX</h3>
+          Es una técnica utilizada para poder cambiar contenido dinámicamente en una aplicación web en el lado del cliente. El contenido es modificado sin necesidad de recargar la pagina o interrumpir su comportamiento.
+        </section>
+        <section>
+          Esto se realiza pidiendo datos a un servidor asincrónicamente. Cuando el servidor responde con los datos solicitados, se utiliza Javascript para modificar el contenido utilizando esta nueva información.
+        </section>
+      </section>
+      <section>
+        <h3>XHR y fetch</h3>
+        Se suele utilizar XHR o fetch (mas moderno) para ejecutar AJAX en paginas web. <br> --- <br>
+        <a target="_blank" href="https://codesandbox.io/s/gracious-elion-ifq8p?file=/src/index.js">CodeSandbox</a>
+      </section>
+      <section>
+        <section>
+          <h3>XHR</h3>
+          Request AJAX utilizando método 'GET'
+          <pre><code data-trim class="lang-javascript">
+            const xhr = new XMLHttpRequest();
+            xhr.open(
+              "GET",
+              "https://gist.githubusercontent.com/spereztoledo/d7740ac1ad1212ce8810c5c809d7acd3/raw/d57477f19d8e173b8671ffff9494db75e246d4e7/quotes.json"
+            );
+          
+            // Rastrea sobre el request los cambio de estado
+            xhr.onreadystatechange = function () {
+              var DONE = 4; // readyState 4 significa que el request esta pronto.
+              var OK = 200; // status 200 fue un retorno exitoso.
+              if (xhr.readyState === DONE) {
+                if (xhr.status === OK) {
+                  // convertir respuesta a JSON ya que xhr solo responde texto o XML
+                  const response = JSON.parse(xhr.responseText);
+                  console.log(response);
+                } else {
+                  console.log("Error: " + xhr.status); // Ocurrió un error durante el request.
+                }
+              }
+            };
+          
+            // Enviar el request hacia quotes.json
+            xhr.send();
+          </code></pre>
+        </section>
+        <section>
+          <h3>fetch</h3>
+          Fetch facilita hacer request y manejar respuestas que con XHR
+          <pre><code data-trim class="lang-javascript">
+            fetch(
+              "https://gist.githubusercontent.com/spereztoledo/d7740ac1ad1212ce8810c5c809d7acd3/raw/d57477f19d8e173b8671ffff9494db75e246d4e7/quotes.json"
+            )
+              .then((data) => {
+                console.log(data);
+                return data.json();
+              })
+              .then((json) => console.log(json))
+              .catch((error) => console.log("Error:" + error));
+          </code></pre>
+        </section>
+      </section>
     </div>
   </div>
 
