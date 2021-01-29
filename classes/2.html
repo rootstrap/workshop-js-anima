@@ -434,7 +434,83 @@
             </li>
           </ol>
         </section>
-      </section>  
+      </section>
+      <!-- Funciones -->
+      <section>
+        <br />
+        <h4 href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones">Funciones</h4>
+        <br />
+        <section>
+          <p>
+            Una función es un "subprograma" que puede ser llamado por código externo (o interno).
+             Se compone de una secuencia de declaraciones, que conforman el llamado cuerpo de la función.
+             Se pueden pasar valores a una función, y la función puede devolver un valor.
+          </p>
+          
+          <aside class="notes">
+            En JavaScript, las funciones son objetos de primera clase, es decir, son objetos y se pueden manipular y transmitir al igual que cualquier otro objeto.
+          </aside>
+        </section>
+      
+        <section>
+          <br/>
+          <p>Para devolver un valor específico distinto del predeterminado, una función debe tener una sentencia <em>return</em>, que especifique el valor a devolver.</p>
+          <p>Los parámetros en la llamada a una función son los argumentos de la función. Son valores que se pasan al invocarla y para usar dentro de ella.</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              function nombre(param1, param2, [...]) {
+                instrucciones
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            El valor predeterminado del return de una funcion es undefined.
+          </aside>
+        </section>
+
+        <section>
+          <br/>
+          <p>Ejemplos</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              function hola(nombre) {
+                const saludo = "hola, " + nombre;
+                return saludo;
+              }
+              hola("maria") // retorna "hola, maria"
+            </code>
+          </pre>
+
+          <pre>
+            <code data-trim class="lang-javascript">
+              function multiplicar(num1, num2) {
+                const total = num1 * num2;
+                return total;
+              }
+              multiplicar(4, 6) // retorna 24
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <br/>
+          <p>El operador () invoca la función</p>
+          <p>Usando el ejemplo de la función <em>multiplicar</em>:</p>
+          <p>Si la usamos así, invocamos al objeto de la función:</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              multiplicar // invocamos al objeto funcion
+            </code>
+          </pre>
+          <p>Si la usamos así, invocamos al resultado de la función:</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              multiplicar(4, 6) // invocamos al reslutado de la funcion
+            </code>
+          </pre>
+        </section>
+
+      </section>
     </div>
   </div>
 
