@@ -13,6 +13,7 @@
 
   <!-- Theme used for syntax highlighted code -->
   <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -386,6 +387,207 @@
         </section>
         
       </section>
+      <!-- Condicionales -->
+      <section>
+        <br />
+        <h4>Condicionales</h4>
+        <br />
+        <section>
+          <p>Las declaraciones condicionales nos permiten realizar diferentes acciones basadas en diferentes
+            <b>condiciones</b> y determinaran si el bloque de codigo a continuación es o no ejecutado.
+          </p>
+          <ul>
+            <li>if</li>
+            <li>else</li>
+            <li>else if</li>
+            <li>switch</li>
+          </ul>
+        </section>
+
+        <section>
+          <br>
+          <p class="align-left"><b>If</b>: El código se ejecutará si una condición especificada es verdadera</p>
+
+          <pre>
+            <code data-trim class="lang-javascript">
+            if (dia == 'Sabado') {
+              console.log('Woohoo');
+            }
+            </code>
+          </pre>
+          <p>
+            Si el valor de la variable <b>dia</b> es "Sabado" se imprimira el texto
+            "Woohoo" en pantalla. En caso de no cumplirse la condición, el código no se ejecutará.
+          </p>
+        </section>
+
+        <section>
+          <br>
+          <p class="align-left"><b>Else</b>: se ejecutará si la condición es falsa</p>
+
+          <pre>
+            <code data-trim class="lang-javascript">
+              if (dia == 'Sabado') {
+                console.log('Woohoo');
+              } else {
+                console.log('Ya falta menos!');
+              }
+            </code>
+          </pre>
+          <p>
+            Si el valor de la variable <b>dia</b> es distinto a "Sabado" se imprimira
+            "Ya falta menos!" en pantalla.
+          </p>
+        </section>
+
+        <section>
+          <br>
+          <p class="small-text align-left"><b>Else if</b>: especifica una nueva condición para probar, si la primera
+            condición es falsa</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+             if (dia == 'Sabado') {
+               console.log('Woohoo!');
+             } else if (day == 'Lunes'){
+                console.log(😬);
+             } else {
+                console.log('Ya falta menos!');
+             }
+            </code>
+          </pre>
+          <p class="small-text">
+            Si el valor de la variable <b>day</b> es distinto a "Sabado" se evaluara el <b>else if</b>. Si el valor de <b>day</b>
+            es igual a "Lunes" se ejecutará el código especificado en el <b>else if</b>. (la sentencia else no sera
+            ejecutada).
+          </p>
+        </section>
+
+        <section>
+          <br>
+          <p class="small-text align-left"><b>Switch</b>: especifica bloques alternativos de código a ejecutar.</p>
+          <pre>
+                <code data-trim class="lang-javascript">
+                  switch(dia) {
+                  case 'Lunes':
+                     console.log(🥱🧉☕️);
+                  break;
+                  case 'Sabado':
+                    console.log(🥳);
+                  break;
+                  default:
+                    console.log(👩‍💻👨‍💻);
+                  }
+                </code>
+              </pre>
+          <p class="small-text">
+            Para la variable <b>dia</b> se evaluan los bloques del switch y se ejecutará el código
+            correspondiente a el caso verdadero. Para el escenario donde ninguna condición se cumple
+            se ejecutará el codigo situado en <b>default</b>.
+          </p>
+        </section>
+      </section>
+
+      <!-- Loops -->
+      <section>
+        <br />
+        <h4>Loops</h4>
+        <br />
+        <section>
+          <p>Los loops permiten ejecutar un bloque de código varias veces.
+            Esta cantidad puede ser determinada numéricamente
+            o dada una condición. 
+            Típicamente suelen ser utilizados para recorrer arreglos.
+            <br>
+          </p>
+          <ul>
+            <li>for</li>
+            <li>while</li>
+          </ul>
+        </section>
+      
+        <section>
+          <p class="align-left">For:</p>
+          <p class="small-text align-left">
+            En este ejemplo la sentencia <b class="italic">for</b> itera sobre una variable numérica <b class="italic">i</b>
+            comenzando en el valor 0
+            e incrementara su valor en cada iteración.
+          </p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              const frutas = ['frutilla', 'manzana', 'banana', 'naranja'];
+              const i;
+              for (i = 0; i < frutas.length; i++) {
+                console.log(frutas[i]);
+              }
+              </code>
+          </pre>
+          <p class="small-text align-left">
+            Para cada iteración se imprime en pantalla el valor de la posición
+            <b class="italic">i</b> en el array de frutas. 
+            La salida tendrá el siguiente orden: "frutilla", "manzana", "banana", "naranja" y se detendrá cuando <b class="italic">i</b> sea menor a 4.
+            Lo que significa que ya hemos recorrido el array completo.
+          </p>
+        </section>
+
+        <section>
+          <p class="small-text align-left">Pasos en la iteración:</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              for(inicializacion; condicion; actualizar) {
+                // codigo a ser ejecutado
+              }
+            </code>
+          </pre>
+          <ol class="small-text ">
+            <li><b>Inicialización</b>: se inicializa y/o declara la variable de iteración.</li>
+            <li>Evaluar la <b>condición</b>. (podra ser verdadera o falsa)
+            </li>
+            <li>
+              <b>Actualizar</b>, se actualiza el valor de la variable inicializada en el primer paso, cuando la condición es verdadera.
+            </li>
+            <li>
+              La condición se evalúa nuevamente y el proceso continúa hasta que la condición sea falsa.
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <p class="align-left">While</p>
+          <p class="small-text align-left">
+            Esta sentencia ejecutará un bloque de código siempre que se cumpla una condición especificada.
+            Cuando esta condición sea falsa, el código no se ejecutará nuevamente.
+          </p>
+          <pre>
+              <code data-trim class="lang-javascript">
+                while (condicion) {
+                  // codigo a ser ejecutado
+                }
+                </code>
+          </pre>
+        </section>
+
+        <section>
+          <p class="small-text align-left">Pasos en la iteración:</p>
+          <pre>
+            <code data-trim class="lang-javascript">
+              const i = 1;
+              while (i < 10) {
+                console.log("El número es:" + i);
+                i++;
+              }
+            </code>
+          </pre>
+          <ol class="small-text">
+            <li>Se evalua la condición inicial <b class="italic">i < 10</b> en caso de ser verdadera se ejecuta el código.
+             En caso de ser falsa el código dentro del while no será ejecutado.</li>
+            <li>Si la condición es verdadera, se mostrará el valor de <b class="italic">i</b> en pantalla y luego será incrementado.
+            </li>
+            <li>
+              Se vuelve a evaluar la condición. 
+            </li>
+          </ol>
+        </section>
+      </section>  
     </div>
   </div>
 
