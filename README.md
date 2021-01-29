@@ -4,6 +4,8 @@ This repository contains slides for the JS workshop for Anima.
 
 The material is presented using [reveal.js](https://revealjs.com/), a HTML presentation framework.
 
+You can visit [this site](https://rootstrap.github.io/workshop-js-anima) to access all the published content.
+
 ## Installation
 
 1. Clone this repository.
