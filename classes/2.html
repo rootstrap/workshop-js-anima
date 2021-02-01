@@ -39,6 +39,9 @@
             Operaciones aritméticas
           </li>
           <li>
+            Operaciones lógicas
+          </li>
+          <li>
             Expresiones y sentencias
           </li>
           <li>
@@ -306,6 +309,175 @@
 
             'Les deseo un feliz ' + año + '!'; // Les deseo un feliz 2021!
           </code></pre>
+        </section>
+      </section>
+
+      <!-- Logical operations -->
+      <section>
+        <h4>Operaciones lógicas</h4>
+
+        <section>
+          Las operaciones lógicas nos permiten generar nuevos valores booleanos a partir de operaciones sobre otros valores booleanos.
+          <br>
+          Los operadores más conocidos son <b>AND</b>, <b>OR</b> y <b>NOT</b>.
+        </section>
+
+        <section class="truth-tables">
+          <table class="inline-table">
+            <thead>
+              <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>A AND B</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>V</td>
+                <td>V</td>
+                <td>V</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>V</td>
+                <td>F</td>
+              </tr>
+              <tr>
+                <td>V</td>
+                <td>F</td>
+                <td>F</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>F</td>
+                <td>F</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="inline-table">
+            <thead>
+              <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>A OR B</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>V</td>
+                <td>V</td>
+                <td>V</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>V</td>
+                <td>V</td>
+              </tr>
+              <tr>
+                <td>V</td>
+                <td>F</td>
+                <td>V</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>F</td>
+                <td>F</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="inline-table">
+            <thead>
+              <tr>
+                <th>A</th>
+                <th>NOT A</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>V</td>
+                <td>F</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>V</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <aside class="notes">
+            Para entender los resultados de aplicar éstas operaciones, es importante entender las tablas de verdad.
+          </aside>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">AND</a></h5>
+
+          Esta operación retorna el valor <b>verdadero</b> solo si <b>todos sus operandos</b> tiene el valor verdadero.
+          <pre><code data-trim class="lang-javascript">
+            const a = 3;
+            const b = -2;
+
+            console.log(a < 0 && b > 0); # Imprime false
+            console.log(a < 0 && b < 0); # Imprime false
+            console.log(a > 0 && b > 0); # Imprime false
+            console.log(a > 0 && b < 0); # Imprime true
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR">OR</a></h5>
+
+          Esta operación retorna el valor <b>verdadero</b> si <b>alguno de sus operandos</b> tiene el valor verdadero.
+          <pre><code data-trim class="lang-javascript">
+            const a = 3;
+            const b = -2;
+
+            console.log(a < 0 || b > 0); # Imprime false
+            console.log(a < 0 || b < 0); # Imprime true
+            console.log(a > 0 || b > 0); # Imprime true
+            console.log(a > 0 || b < 0); # Imprime true
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Operadores_l%C3%B3gicos#logical_not_!">NOT</a></h5>
+
+          Esta operación retorna <b>el valor contrario</b> a la condición que es aplicado.
+          <pre><code data-trim class="lang-javascript">
+            const a = 3;
+
+            console.log(a < 0); # Imprime false
+            console.log(!(a < 0)); # Imprime true
+
+            console.log(a > 0); # Imprime true
+            console.log(!(a > 0)); # Imprime false
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Operadores_l%C3%B3gicos#evaluaci%C3%B3n_contra_corto_circuitos">Circuito corto</a></h5>
+          Teniendo en cuenta las tablas de verdad, y que las operaciones lógicas son evaluadas de izquierda a derecha, JavaScript ejecuta estas operaciones utilizando lo que llamamos "circuito corto".
+          <br><br>
+          Básicamente las reglas son las siguientes:
+          <ul>
+            <li>
+              false && (cualquier valor) evalúa a "false".
+            </li>
+            <li>
+              true || (cualquier valor) evalúa a "true".
+            </li>
+          </ul>
+
+          <aside class="notes">
+            Si JavaScript detecta que estamos utilizando un &&, y al evaluar la primer condición ésta dio falso, no ejecuta la segunda condición y retorna false.
+            <br>
+            Lo mismo aplica para el OR. Si JavaScript detecta que estamos utilizando un ||, y al evaluar la primer condición ésta dio verdadero, no ejecuta la segunda condición y retorna verdadero.
+          </aside>
         </section>
       </section>
 
