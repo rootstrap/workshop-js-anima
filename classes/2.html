@@ -39,7 +39,7 @@
             Operaciones aritméticas
           </li>
           <li>
-            Expresiones y declaraciones
+            Expresiones y sentencias
           </li>
           <li>
             Condicionales
@@ -307,6 +307,165 @@
             'Les deseo un feliz ' + año + '!'; // Les deseo un feliz 2021!
           </code></pre>
         </section>
+      </section>
+
+      <!--Expresiones y sentencias-->
+      <section>
+        <h4>Expresiones y Sentencias</h4>
+
+        <section>
+          <h5 href='https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores#expresiones_y_operadores_por_categor%C3%ADa'>Expresiones</h5>
+          Una expresión es una unidad de código que se puede evaluar a un valor, o sea, produce un valor. 
+        </section>
+        <section>
+          Las hay de distintas categorías:
+          <ul>
+            <li>
+              Aritméticas: evalúan a un número
+              <pre><code data-trim class="lang-javascript">
+                10;
+                10+13;
+              </code></pre>
+            </li>
+            <li>Strings: Evalúan a un string
+              <pre><code data-trim class="lang-javascript">
+                'hola';
+                'hola ' + 'mundo';
+              </code></pre>
+            </li>
+            <li>Lógicas: Evalúan a un valor booleano (true o false)
+              <pre><code data-trim class="lang-javascript">
+                10 > 9;   // true
+                10 < 20;  // false
+                true;
+                20 === 20 && "10" === 10; // false
+                !true; // false
+              </code></pre>
+            </li>
+          </section>
+          <section>
+            <li>Expresiones primarias: Valores literales y palabras clave 
+              <pre><code data-trim class="lang-javascript">
+                'hola mundo';  // Un literal string
+                23;            // Un literal numérico
+                true;          // Booleano en true
+                function;      // Palabra clave que define una funcion
+                this;          // Palabra clave que evalua al objeto actual
+              </code></pre>
+            </li>
+            <li>Expresiones del lado izquierdo: Los valores de la izquierda son el destino de una asignación.</li>
+              <pre><code data-trim class="lang-javascript">
+                i = 10;
+                total = 0;
+              </code></pre>            
+          </ul>
+        </section>
+        <section>
+          <h5 href='https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias'>Sentencias</h5>
+          Una sentencia puede estar formada por múltiples líneas o una sola. Las hay de distintos tipos: 
+        </section>
+        <section>
+          <h6>Control de flujo</h6>
+          <ul>
+            <li>
+              Un bloque
+              <pre><code data-trim class="lang-javascript">
+                { sentencia_1; sentencia_2; }    
+              </code></pre> 
+            </li>
+            <li>
+              break
+            </li>
+            <li>
+              if...else
+            </li>
+            <li>
+              switch
+            </li>
+            <li>
+              throw
+            </li>
+            <li>
+              try...catch
+            </li>
+            <li style="opacity: 0.5;">
+              Empty
+              <pre><code data-trim class="lang-javascript">
+                ;
+              </code></pre> 
+            </li>
+          </section>
+          <section>
+            <h6>Declaraciones</h6>
+            <ul>
+              <li>
+                var
+              </li>
+              <li>
+                let
+              </li>
+              <li>
+                const
+              </li>          
+            </ul>
+          </section>
+          <section>
+            <h6>Iteraciones</h6>
+            <ul>
+              <li>
+                do...while
+              </li>
+              <li>
+                for
+              </li>
+              <li>
+                for each...in
+              </li> 
+              <li>
+                for...in
+              </li>
+              <li>
+                for...of
+              </li>  
+              <li>
+                while
+              </li>          
+            </ul>
+          </section>
+          <section>
+            <h6>Funciones</h6>
+            <p>(entre otras)</p>
+            <ul>
+              <li>
+                function
+              </li>
+              <li>
+                return
+              </li>
+              <li>
+                class
+              </li>    
+            </ul>
+          </section>
+          <section>
+            <h6>Otros</h6>
+            <ul>
+              <li>
+                debugger: Permite <em>debuggear</em> la aplicación mientras se está ejecutando. Hace que la ejecución se detenga en la sentencia debugger y nos permite examinar el código paso a paso.
+               </li>
+              <li style="opacity: 0.5;">
+                export
+              </li>
+              <li style="opacity: 0.5;">
+                import
+              </li>    
+            </ul>
+          </section>
+        </section>
+        <aside class="notes">
+          Muchas las vamos a ver a modo de título nomás y otras se van a ver más a fondo en otras secciones.
+        </aside>
+        
       </section>
 
       <!-- Condicionales -->
