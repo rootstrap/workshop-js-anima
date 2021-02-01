@@ -9,3 +9,19 @@
 .italic {
   font-style: italic;
 }
+
+.truth-tables {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.inline-table {
+  display: inline-block;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
