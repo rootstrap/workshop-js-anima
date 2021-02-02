@@ -53,6 +53,9 @@
           <li>
             Funciones
           </li>
+          <li>
+            Alcance
+          </li>
         </ol>
       </section>
 
@@ -912,7 +915,93 @@
             </code>
           </pre>
         </section>
+      </section>
 
+      <!-- Scope -->
+      <section>
+        <h3><a href="https://developer.mozilla.org/es/docs/Glossary/Scope">Alcance</a></h3>
+        <section>
+          Cuando hablamos de alcance, nos referimos al contexto en el que los valores y las expresiones son "visibles" o pueden ser referenciados.
+          <br>
+          Si una variable u otra expresión no está "en el alcance actual", entonces no está disponible para su uso.
+        </section>
+
+        <section>
+          Si una variable es definida dentro de una función, ésta solo está disponible dentro de la misma.
+          <pre><code data-trim class="lang-javascript">
+            function ejemplo() {
+              let x = "declarada dentro de la función"; // x solo se puede utilizar en ejemplo
+              console.log(x);
+            };
+            
+            console.log(x); // error
+          </code></pre>
+        </section>
+
+        <section>
+          Sin embargo, podríamos definir la variable antes de la función, para que este disponible tanto dentro como fuera.
+          <pre><code data-trim class="lang-javascript">
+            let x = "variable externa a la función";
+
+            function ejemplo2() {
+              console.log(x);
+            };
+
+            ejemplo2();
+            
+            console.log(x);
+          </code></pre>
+
+          <aside class="notes">
+            En el primer ejemplo, la variable x es definida dentro de la función, por lo que su ciclo de vida termina cuando termina la misma función que la declara y su alcance está limitado únicamente adentro de la función.
+            <br>
+            En el segundo ejemplo, la variable x está definida antes de la función, con lo cual su ciclo de vida es mayor y tambien lo es su alcance (podría ser considerada como global), permitiendo que pueda ser utilizada dentro de la función ejemplo2.
+          </aside>
+
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let#descripci%C3%B3n">VAR VS LET</a></h5>
+          Existen dos instrucciones que nos permiten declarar variables, que son <b>var</b> y <b>let</b>.
+          <br>
+          La diferencia principal entre éstas está relacionada a su alcance. Si definimos una variable con let, ésta se convierte en local al bloque donde fue declarada, pero si utilizamos var, no tiene en cuenta el bloque, sino la función o contexto de declaración
+
+          <aside class="notes">
+            Cuando hablamos de bloque, nos referimos por ejemplo al código dentro de un if, else, loop, o cualquier instrucción de control.
+          </aside>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let#descripci%C3%B3n">VAR VS LET</a></h5>
+          Si utilizamos let
+          <pre><code data-trim class="lang-javascript">
+            const a = 1;
+            const b = 2;
+
+            if (a < b) {
+              let c = 3;
+              console.log(c); // Imprime 3
+            };
+
+            console.log(c); // Error
+          </code></pre>
+        </section>
+
+        <section>
+          <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let#descripci%C3%B3n">VAR VS LET</a></h5>
+          Si utilizamos var
+          <pre><code data-trim class="lang-javascript">
+            const a = 1;
+            const b = 2;
+
+            if (a < b) {
+              var c = 3;
+              console.log(c); // Imprime 3
+            };
+
+            console.log(c); // Imprime 3
+          </code></pre>
+        </section>
       </section>
     </div>
   </div>
