@@ -65,14 +65,14 @@
         <section>
           Las variables son contenedores que nos permiten almacenar valores.
           Para declarar una variable podemos utilizar la palabra clave <b>let</b>.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let miVariable;
           </code></pre>
         </section>
 
         <section>
           También podemos asignarle un valor al momento de su declaración.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let miVariable = "a value";
           </code></pre>
         </section>
@@ -81,7 +81,7 @@
           JavaScript es un lenguaje dinámico y de tipado flexible.
           <br>
           Las variables en JavaScript no están asociadas directamente con ningún tipo de valor en particular, y a cualquier variable se le pueden asignar (y reasignar) valores de todos los tipos.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let foo = 42;    // foo es un número
             foo     = 'bar'; // foo es un string
             foo     = true;  // foo es un boolean
@@ -92,7 +92,7 @@
           Además de variables, podemos definir constantes.
           <br>
           A diferencia de las variables, una constante no puede cambiar su valor posteriormente, por lo que se debe especificar su valor en la misma sentencia en la que se declara.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             const foo = 7; // foo es una constante con el número 7
             foo = 20;      // lanzará un error
           </code></pre>
@@ -124,7 +124,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/undefined">Undefined</a></h5>
           Una variable a la que no se le ha asignado un valor tiene el valor indefinido
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let miVariable;
             console.log(miVariable); // imprime undefined
           </code></pre>
@@ -133,7 +133,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/Boolean">Boolean</a></h5>
           Representa una entidad lógica y puede tener dos valores: verdadero y falso
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let miVariable1 = true;
             console.log(miVariable1); // imprime el valor booleano true
 
@@ -146,7 +146,7 @@
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/Numero">Number</a></h5>
           Números entre <b>-(253 − 1)</b> y <b>253 − 1</b>.</br>
           Adicionalmente, JS cuenta con 3 tipos simbólicos: <b>+Infinity</b>, <b>-Infinity</b>, y <b>NaN</b> ("Not a Number").
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let miVariable = 7;
             console.log(miVariable); // imprime el número 7
           </code></pre>
@@ -155,7 +155,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/es/docs/Glossary/String">String</a></h5>
           Sirve para representar una cadena de caracteres. La longitud del string está dada por la cantidad de elementos que lo componen.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let miVariable = "Hola mundo!";
             console.log(miVariable); // imprime Hola mundo!
           </code></pre>
@@ -171,7 +171,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects">Objetos</a></h5>
           En JavaScript, un objeto es una estructura de datos que almacena claves y valores.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             // Opción 1
             let auto    = new Object();
             auto.marca  = 'Ford';
@@ -198,7 +198,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects">Objetos</a></h5>
           Para acceder a los valores del objeto, lo podemos hacer utilizando <b>objecto.nombre_atributo</b> ó <b>objecto['nombre_atributo']</b>
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             console.log(auto.marca); // Imprime 'Ford'
             console.log(auto['marca']); // Imprime 'Ford'
 
@@ -209,7 +209,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Arreglos</a></h5>
           Los arreglos son estructuras ordenadas que representan listas o collecciones de valores.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let frutas = ['Manzana', 'Banana']
 
             console.log(frutas) // Imprime ['Manzana', 'Banana']
@@ -223,7 +223,7 @@
           Para acceder a los valores, debemos indicar la posición del elemento que deseamos.
           <br>
           <b>IMPORTANTE:</b> El primer elemento ocupa la posición 0.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let arreglo = ['Manzana', 'Banana', 1, false]
 
             console.log(arreglo[0]) // Imprime 'Manzana'
@@ -246,7 +246,7 @@
           <h4><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">Operaciones aritméticas</a></h5>
           Como todos los lenguajes de programación, JavaScript permite ejecutar operaciones aritméticas con sus datos.
 
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             2 + 2; // 4
             2 - 1; // 1
             3 * 2; // 6
@@ -258,7 +258,7 @@
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">Operaciones de asignación</a></h5>
           Podemos también combinar todas las operaciones aritméticas con asignaciones
 
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let suma = 2;
             suma += 2; // suma = suma + 2 // suma = 4
 
@@ -276,7 +276,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#comparison_operators">Comparación</a></h5>
 
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             // Mayor y menor
             3 > 2; // true
             3 < 2; // false
@@ -307,7 +307,7 @@
         <section>
           También podemos realizar ciertas sumas entre distintos tipos de datos, por ejemplo para generar Strings con datos que tenemos en variables.
 
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let año = 2021;
 
             'Les deseo un feliz ' + año + '!'; // Les deseo un feliz 2021!
@@ -421,7 +421,7 @@
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">AND</a></h5>
 
           Esta operación retorna el valor <b>verdadero</b> solo si <b>todos sus operandos</b> tiene el valor verdadero.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             const a = 3;
             const b = -2;
 
@@ -436,7 +436,7 @@
           <h5><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR">OR</a></h5>
 
           Esta operación retorna el valor <b>verdadero</b> si <b>alguno de sus operandos</b> tiene el valor verdadero.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             const a = 3;
             const b = -2;
 
@@ -451,7 +451,7 @@
           <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Operadores_l%C3%B3gicos#logical_not_!">NOT</a></h5>
 
           Esta operación retorna <b>el valor contrario</b> a la condición que es aplicado.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             const a = 3;
 
             console.log(a < 0); # Imprime false
@@ -497,19 +497,19 @@
           <ul>
             <li>
               Aritméticas: evalúan a un número
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 10;
                 10+13;
               </code></pre>
             </li>
             <li>Strings: Evalúan a un string
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 'hola';
                 'hola ' + 'mundo';
               </code></pre>
             </li>
             <li>Lógicas: Evalúan a un valor booleano (true o false)
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 10 > 9;   // true
                 10 < 20;  // false
                 true;
@@ -520,7 +520,7 @@
           </section>
           <section>
             <li>Expresiones primarias: Valores literales y palabras clave 
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 'hola mundo';  // Un literal string
                 23;            // Un literal numérico
                 true;          // Booleano en true
@@ -529,7 +529,7 @@
               </code></pre>
             </li>
             <li>Expresiones del lado izquierdo: Los valores de la izquierda son el destino de una asignación.</li>
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 i = 10;
                 total = 0;
               </code></pre>            
@@ -544,7 +544,7 @@
           <ul>
             <li>
               Un bloque
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 { sentencia_1; sentencia_2; }    
               </code></pre> 
             </li>
@@ -565,7 +565,7 @@
             </li>
             <li style="opacity: 0.5;">
               Empty
-              <pre><code data-trim class="lang-javascript">
+              <pre><code data-line-numbers data-trim class="lang-javascript">
                 ;
               </code></pre> 
             </li>
@@ -665,7 +665,7 @@
           <p class="align-left"><b>If</b>: El código se ejecutará si una condición especificada es verdadera</p>
 
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers  data-trim class="lang-javascript">
             if (dia == 'Sabado') {
               console.log('Woohoo');
             }
@@ -682,7 +682,7 @@
           <p class="align-left"><b>Else</b>: se ejecutará si la condición es falsa</p>
 
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers  data-trim class="lang-javascript">
               if (dia == 'Sabado') {
                 console.log('Woohoo');
               } else {
@@ -700,7 +700,7 @@
           <p class="small-text align-left"><b>Else if</b>: especifica una nueva condición para probar, si la primera
             condición es falsa</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers  data-trim class="lang-javascript">
               if (dia == 'Sabado') {
                 console.log('Woohoo!');
               } else if (dia == 'Lunes'){
@@ -719,7 +719,7 @@
           <br>
           <p class="small-text align-left"><b>Switch</b>: especifica bloques alternativos de código a ejecutar.</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               switch(dia) {
               case 'Lunes':
                   console.log(🥱🧉☕️);
@@ -766,7 +766,7 @@
             e incrementara su valor en cada iteración.
           </p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               const frutas = ['frutilla', 'manzana', 'banana', 'naranja'];
               let i;
               for (i = 0; i < frutas.length; i++) {
@@ -785,7 +785,7 @@
         <section>
           <p class="small-text align-left">Pasos en la iteración:</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               for(inicializacion; condicion; actualizar) {
                 // codigo a ser ejecutado
               }
@@ -811,7 +811,7 @@
             Cuando esta condición sea falsa, el código no se ejecutará nuevamente.
           </p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               while (condicion) {
                 // codigo a ser ejecutado
               }
@@ -822,7 +822,7 @@
         <section>
           <p class="small-text align-left">Pasos en la iteración:</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               let i = 1;
               while (i < 10) {
                 console.log("El número es:" + i);
@@ -841,6 +841,7 @@
           </ol>
         </section>
       </section>
+
       <!-- Funciones -->
       <section>
         <br />
@@ -863,7 +864,7 @@
           <p>Para devolver un valor específico distinto del predeterminado, una función debe tener una sentencia <em>return</em>, que especifique el valor a devolver.</p>
           <p>Los parámetros en la llamada a una función son los argumentos de la función. Son valores que se pasan al invocarla y para usar dentro de ella.</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               function nombre(param1, param2, [...]) {
                 instrucciones
               }
@@ -878,7 +879,7 @@
           <br/>
           <p>Ejemplos</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               function hola(nombre) {
                 const saludo = "hola, " + nombre;
                 return saludo;
@@ -888,7 +889,7 @@
           </pre>
 
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               function multiplicar(num1, num2) {
                 const total = num1 * num2;
                 return total;
@@ -904,13 +905,13 @@
           <p>Usando el ejemplo de la función <em>multiplicar</em>:</p>
           <p>Si la usamos así, invocamos al objeto de la función:</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               multiplicar; // invocamos al objeto funcion
             </code>
           </pre>
           <p>Si la usamos así, invocamos al resultado de la función:</p>
           <pre>
-            <code data-trim class="lang-javascript">
+            <code data-line-numbers data-trim class="lang-javascript">
               multiplicar(4, 6); // invocamos al resultado de la funcion
             </code>
           </pre>
@@ -928,7 +929,7 @@
 
         <section>
           Si una variable es definida dentro de una función, ésta solo está disponible dentro de la misma.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             function ejemplo() {
               let x = "declarada dentro de la función"; // x solo se puede utilizar en ejemplo
               console.log(x);
@@ -940,7 +941,7 @@
 
         <section>
           Sin embargo, podríamos definir la variable antes de la función, para que este disponible tanto dentro como fuera.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             let x = "variable externa a la función";
 
             function ejemplo2() {
@@ -974,7 +975,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let#descripci%C3%B3n">VAR VS LET</a></h5>
           Si utilizamos let
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             const a = 1;
             const b = 2;
 
@@ -990,7 +991,7 @@
         <section>
           <h5><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let#descripci%C3%B3n">VAR VS LET</a></h5>
           Si utilizamos var
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-line-numbers data-trim class="lang-javascript">
             const a = 1;
             const b = 2;
 

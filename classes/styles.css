@@ -20,7 +20,7 @@
   display: inline-block;
 }
 
-table, th, td {
+.inline-table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
