@@ -24,28 +24,91 @@
         <h1>JavaScript asincrónico</h1>
       </section>
 
-      <!-- Schedule -->
-      <section>
-        <h3>Agenda</h3>
-        <ol>
-          <li>
-            Funciones callback
-          </li>
-          <li>
-            setTimeout - setInterval
-          </li>
-          <li>
-            <!-- Maybe fetch API should be after promises -->
-            AJAX, XHR y API fetch
-          </li>
-          <li>
-            Promesas
-          </li>
-          <li>
-            Async/await
-          </li>
-        </ol>
-      </section>
+        <!-- Schedule -->
+        <section>
+          <h3>Agenda</h3>
+          <ol>
+            <li>Repaso de JS basico</li>
+            <li>¿Que es asincronía?</li>
+            <li>Funciones callback</li>
+            <li><code>setTimeout</code> y <code>setInterval</code></li>
+            <li>AJAX, XHR</li>
+            <li>Promesas y API <code>fetch</code></li>
+            <li><code>async</code> / <code>await</code></li>
+          </ol>
+        </section>
+        
+        <!-- Repaso -->
+        <section>
+          <h3>Repaso</h3>
+          <section>Recap slide 1</section>
+          <section>Recap slide 2</section>
+        </section>
+
+        <!-- Intro a asincronía -->
+        <section>
+          <h3>¿Que es asincronía?</h3>
+          <section>
+            <p>
+              Para entender asincronía en JavaScript, primero tengamos claro lo opuesto
+            </p>
+            <p>
+              Cambiemos momentáneamente la pregunta: ¿Qué es JavaScript síncrono?
+            </p>
+          </section>
+          <section>
+            Lo que han visto hasta ahora, es todo código síncrono. La ejecución se realiza en orden. Una
+            sentencia se ejecuta una vez que la anterior finaliza, de arriba a abajo.
+            <pre><code data-trim data-line-numbers class="lang-javascript">
+              console.log('Primer salida a consola');
+              console.log('Segunda salida a consola');
+          </code></pre>
+          </section>
+          <section>
+            <img src="../assets/syncVsAsync.png" alt="">
+          </section>
+          <section>
+            <p>
+              Ejecutar código de manera síncrona nos impone algunas limitantes con operaciones lentas, costosas o ejecutadas por terceros. Veamos el
+              siguiente código.
+            </p>
+            <pre><code data-trim data-line-numbers="1|2|3-9|4-6|7-9">
+                const btn = document.querySelector('button');
+                btn.addEventListener('click', function () {
+                  let fecha;
+                  for (let i = 0; i < 10000000; i++) {
+                    fecha = new Date();
+                  }
+                  let pElem = document.createElement('p');
+                  pElem.textContent = fecha;
+                  document.body.appendChild(pElem);
+                });
+            </code></pre>
+            <iframe data-src="../ejemplos/async/blocking.html" height="100px" width="800px"> </iframe>
+            <aside class="notes">
+              <p>
+                El codigo que vemos acá corre sobre un html con un botón. En la primer linea vemos
+                con lo selecciona y en la segunda se agrega un listener para el evento click. La
+                función que se define entre las lineas 3 y 8 corre una vez se haga click al botón.
+              </p>
+              <p>
+                Lo que hace esta función es: primero obtiene una fecha y la muestra por consola.
+                Luego calcula 20 millones de veces la fecha, y la muestra nuevamente por consola. El
+                ejemplo es claramente ridículo, pero demuestra como una operación que consume mucho
+                tiempo, inhabilita el navegador.
+              </p>
+              <p>
+                Mientras se ejecuta el loop, el control queda allí y no es devuelto al navegador
+                para continuar actualizando la pantalla o continuar ejecutando código. A esto se le
+                llama "código bloqueante".
+              </p>
+            </aside>
+          </section>
+          <section>
+            Para evitar el código bloqueante, para por ejemplo, no congelar el navegador mientras
+            pedimos información a un servidor, hacemos uso de código que corre de forma asíncrona.
+          </section>
+        </section>
 
       <!-- Callbacks -->
       <section>
@@ -53,7 +116,7 @@
         <section>
           Una función callback es aquella que es pasada por parámetro a otra función, para luego ser invocada
           internamente.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-trim data-line-numbers class="lang-javascript">
             function greeting(name) {
               alert('Hola ' + name);
             };
@@ -73,7 +136,7 @@
         </section>
         <section>
           Podemos manejar eventos del DOM utilizando callbacks.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-trim data-line-numbers class="lang-javascript">
             function callback(event) {
               event.preventDefault();
               console.log("El usuario hizo click en el botón!");
@@ -101,7 +164,7 @@
         <section>
           <h3>setTimeout</h3>
           Recibe como primer parámetro la función callback, y como segundo parámetro el tiempo que debe esperar para realizar la invocación a la función (expresado en milisegundos).
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-trim data-line-numbers class="lang-javascript">
             function myFunction() {
               console.log("Han pasado 3 segundos!");
             };
@@ -115,7 +178,7 @@
         <section>
           <h3>setInterval</h3>
           Recibe como primer parámetro la función callback, y como segundo parámetro el tiempo que debe esperar entre cada invocación a la función (expresado en milisegundos).
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-trim data-line-numbers class="lang-javascript">
             let counter = 0;
             function incrementCounter() {
               counter = counter + 1;
@@ -131,7 +194,7 @@
         <section>
           <h3>setTimeout - setInterval</h3>
           Puede suceder que necesitemos que nuestro timer no se siga ejecutando. Para ello podemos utilizar la función <b>clearTimeout</b> o <b>clearInterval</b>.
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-trim data-line-numbers class="lang-javascript">
             let counter = 0;
             let timer;
 
@@ -154,7 +217,7 @@
         </section>
       </section>
       
-      <!-- AJAX, XHR y API fetch -->
+      <!-- AJAX y XHR -->
       <section>
         <section>
           <h3>AJAX</h3>
@@ -163,34 +226,35 @@
         <section>
           Esto se realiza pidiendo datos a un servidor asincrónicamente. Cuando el servidor responde con los datos solicitados, se utiliza Javascript para modificar el contenido con esta nueva información.
         </section>
-      </section>
-      <section>
-        <h3>XHR y fetch</h3>
-        Se suele utilizar XHR o fetch (más moderno) para ejecutar AJAX en páginas web. <br> --- <br>
-        <a target="_blank" href="https://codesandbox.io/s/restless-glade-jhwe4">CodeSandbox</a>
-      </section>
-      <section>
+        <section>
+          <h3>XHR</h3>
+          Se utiliza XHR (sigla para <a href="https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>) para ejecutar AJAX en páginas web. 
+          <br> --- <br>
+          <a target="_blank" href="https://codesandbox.io/s/restless-glade-jhwe4">CodeSandbox</a>
+        </section>
         <section>
           <h3>XHR</h3>
           Request AJAX utilizando método 'GET'
-          <pre><code data-trim class="lang-javascript">
+          <pre><code data-trim data-line-numbers class="lang-javascript">
             const xhr = new XMLHttpRequest();
             xhr.open(
               "GET",
               "https://gist.githubusercontent.com/spereztoledo/d7740ac1ad1212ce8810c5c809d7acd3/raw/d57477f19d8e173b8671ffff9494db75e246d4e7/quotes.json"
             );
           
-            // Rastrea sobre el request los cambio de estado
+            // Callback para cambio de estado en el request
             xhr.onreadystatechange = function () {
-              let DONE = 4; // readyState 4 significa que el request esta pronto.
-              let OK = 200; // status 200 fue un retorno exitoso.
+              let DONE = 4; // readyState 4 => el request esta pronto.
+              let OK = 200; // status 200 => retorno exitoso.
               if (xhr.readyState === DONE) {
                 if (xhr.status === OK) {
-                  // convertir respuesta a JSON ya que xhr solo responde texto o XML
+                  // convertir respuesta a JSON 
+                  // ya que xhr solo responde texto o XML
                   const response = JSON.parse(xhr.responseText);
                   console.log(response);
                 } else {
-                  console.log("Error: " + xhr.status); // Ocurrió un error durante el request.
+                  // Ocurrió un error durante el request.
+                  console.log("Error: " + xhr.status); 
                 }
               }
             };
@@ -199,20 +263,79 @@
             xhr.send();
           </code></pre>
         </section>
+      </section>
+      <!-- Promesas y fetch API -->
+      <section>
+        <h3>Promesas</h3>
         <section>
-          <h3>fetch</h3>
-          Fetch hace más fácil el manejo de peticiones y respuestas del servidor, en comparación con XHR.
-          <pre><code data-trim class="lang-javascript">
-            fetch(
-              "https://gist.githubusercontent.com/spereztoledo/d7740ac1ad1212ce8810c5c809d7acd3/raw/d57477f19d8e173b8671ffff9494db75e246d4e7/quotes.json"
-            )
-              .then((data) => {
-                console.log(data);
+          Una <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise">promesa</a> es un objeto que representa el estado de una operación asíncrona. El navegador nos promete retornar una respuesta cuando la reciba, si la recibe
+        </section>
+        <section>
+          <h3> Estados de una promesa</h3>
+            <h4 style="color:blue">pending</h4>
+            <p>Estado inicial, ni completada ni rechazada</p>
+            <h4 style="color:green">fulfilled</h4>
+            <p>Completada satisfactoriamente, retornando un valor</p>
+            <h4 style="color:red">rejected</h4>
+            <p>La operación falló, retornando un error</p>
+        </section>
+        <section>
+          <p>Para usar una promesa, se encadenan metodos, que ejecutarán callbacks según lo que suceda con la respuesta. Estos callbacks recibirán los datos que podemos manejar dentro de estas funciones. Los metodos son:</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/then">then</a></li>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/catch">catch</a></li>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/finally">finally</a></li>
+          </ul>
+        </section>
+        <section>
+          Un buen ejemplo de uso de promesas es la API <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API">fetch</a>. Esta facilita el manejo de peticiones y respuestas a un servidor, en comparación con XHR.
+          <pre><code data-trim data-line-numbers="1|2|3|7|8|9|10|11|1-12" class="lang-javascript">
+            const promesa = fetch("https://api.ejemplo.com/datos");
+            promesa.then(function (data) {
                 return data.json();
-              })
-              .then((json) => console.log(json))
-              .catch((error) => console.log("Error:" + error));
+            }).then(function (json){
+                console.log(json);
+            }).catch(function (error) {
+                console.log("Error:" + error); 
+            }).finally(function (){
+                console.log('Fin de ejecución de fetch');
+            });
           </code></pre>
+        </section>
+      </section>
+      <section>
+        <h3>async / await</h3>
+        <section>
+          <p>
+            Declarar funciones como <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asincrona">async</a> nos permite usar una santaxis más simple para utilizar promesas, habilitandonos el uso de la palabra clave <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/await">await</a>. 
+          </p>
+          <p>
+            El código luce como si fuera síncrono!
+          </p>
+        </section>
+        <section>
+          Reescribamos esta funcion con promesas usando async/await
+          <div class="fragment" data-fragment-index=0>
+            <pre><code data-trim data-line-numbers= class="lang-javascript">
+              function obtenerDatos() {
+                const promesa = fetch("https://api.com/datos");
+                promesa.then(function (respuesta) {
+                    return respuesta.json();
+                }).then(function (data){
+                    console.log(data);
+                })
+              }
+            </code></pre>
+          </div>
+          <div class="fragment" data-fragment-index=4>
+            <pre><code data-trim data-line-numbers class="lang-javascript">
+              async function obtenerDatos() {
+                const respuesta = await fetch("https://api.com/datos");
+                const data = await respuesta.json();
+                console.log(data);
+              }
+            </code></pre>
+          </div>
         </section>
       </section>
     </div>
