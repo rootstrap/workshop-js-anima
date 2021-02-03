@@ -56,6 +56,12 @@
           <li>
             Alcance
           </li>
+          <li>
+            Manipulación del DOM
+          </li>
+          <li>
+            Eventos
+          </li>
         </ol>
       </section>
 
@@ -1002,6 +1008,127 @@
 
             console.log(c); // Imprime 3
           </code></pre>
+        </section>
+      </section>
+
+      <!-- DOM -->
+      <section>
+        <h3>Manipulación del DOM</h3>
+        <section>
+          <h5><a href="https://developer.mozilla.org/es/docs/Web/API/Document">Document</a></h5>
+          <p>
+            La interfaz Document representa cualquier página web cargada en el navegador y sirve como punto de entrada al contenido de la página.
+          </p>
+          <p>
+            Nos provee métodos para recuperar y modificar los elementos del documento HTML.
+          </p>
+        </section>
+
+        <section>
+          Para acceder obtener un elemento del HTML podemos utilizar algunas de las siguientes instrucciones:
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">document.querySelector</a></li>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByName">document.getElementsByName</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById">document.getElementById</a></li>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByClassName">document.getElementsByClassName</a></li>
+          </ul>
+
+          <aside class="notes">
+            Todos estos métodos nos permiten obtener elementos del DOM. Para querySelector podemos utilizar tanto el id de un elemento (indicándolo con #) o su clase (indicándolo con .)
+          </aside>
+        </section>
+
+        <section>
+          Luego de recuperar un elemento, podemos interactuar con éste y cambiarle los valores o agregarle nuevas propiedades.
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            // Recuperamos un link del documento HTML.
+            const link = document.querySelector('a');
+
+            // Actualizamos sus propiedades.
+            link.textContent = 'Hola Mundo';
+            link.href = 'https://rootstrap.github.io/workshop-js-anima';
+          </code></pre>
+
+        </section>
+
+        <section>
+          Con <b>document</b> también podemos crear nuevos elementos y agregarlos al HTML.
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            const seccion = document.querySelector('section');
+
+            const parrafo = document.createElement('p');
+            parrafo.textContent = 'Esto es un nuevo párrafo!';
+
+            seccion.appendChild(parrafo);
+          </code></pre>
+
+        </section>
+
+        <section>
+          Con <b>document</b> también podemos crear nuevos elementos y agregarlos al HTML.
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            const seccion = document.querySelector('section');
+
+            const parrafo = document.createElement('p');
+            parrafo.textContent = 'Esto es un nuevo párrafo!';
+
+            seccion.appendChild(parrafo);
+          </code></pre>
+        </section>
+      </section>
+
+      <!-- Eventos -->
+      <section>
+        <a href="https://developer.mozilla.org/es/docs/Web/Events">Eventos</a>
+        <section>
+          <p>Los eventos se envían para notificar al código de cosas interesantes que han ocurrido.</p>
+          <p>Pueden representar tanto las interacciones del usuario con el sitio, como comportamiento interno o notificaciones que reciben los elementos.</p>
+          <p>Para manejar eventos utilizamos funciones. Éstas reciben como parámetro un <a href="https://developer.mozilla.org/es/docs/Web/API/Event">Event</a>, con la información del evento que ha sido ejecutado.</p>
+        </section>
+
+        <section>
+          <p>El evento que tenemos disponible en nuestras funciones manejadoras puede ser útil para algunas cosas</p>
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            // Suponiendo que tenemos el siguiente elemento en nuestro HTML
+            <a href="https://rootstrap.github.io/workshop-js-anima">Esto es un link</a>
+
+            function manejadorClick(evento) {
+              // Evitamos que el link redireccione a otro sitio
+              evento.preventDefault();
+
+              // Obtenemos el elemento que disparó el evento
+              evento.target;
+            };
+
+            const link = document.querySelector('a');
+            link.addEventListener('click', manejadorClick);
+          </code></pre>
+        </section>
+
+        <section>
+          <p>Existe una gran cantidad de eventos que podemos manejar en JavaScript y que son comunes a todos los elementos del DOM.</p>
+          <p>Tambien existen algunos eventos que son particulares de un tipo de etiquetas, por ejemplo el evento <b>submit</b> en los formularios, que es disparado cuando apretamos el botón para enviarlo.</p>
+        </section>
+
+        <section>
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            // Evento click
+            boton.addEventListener('click', manejadorClick);
+
+            // Envío de formulario
+            formulario.addEventListener('submit', manejadorSubmit);
+
+            // Cuando el cursor pasa por arriba del elemento
+            elemento.addEventListener('hover', manejadorSubmit);
+
+            // Cuando el usuario modifica un campo de un formulario
+            input.addEventListener('change', manejadorCambio);
+          </code></pre>
+
+          <aside class="notes">
+            <p>Estos son algunos ejemplos de los eventos más utilizados.</p>
+            <p>Hay un listado con gran cantidad de eventos en el link que se encuentra en el título de la presentación</p>
+          </aside>
         </section>
       </section>
     </div>
