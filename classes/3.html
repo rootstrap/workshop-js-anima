@@ -87,13 +87,13 @@
             <iframe data-src="../ejemplos/async/blocking.html" height="100px" width="800px"> </iframe>
             <aside class="notes">
               <p>
-                El codigo que vemos acá corre sobre un html con un botón. En la primer linea vemos
-                con lo selecciona y en la segunda se agrega un listener para el evento click. La
-                función que se define entre las lineas 3 y 8 corre una vez se haga click al botón.
+                El código que vemos acá corre sobre un html con un botón. En la primer linea vemos
+                que lo selecciona y en la segunda se agrega un manejador para el evento click. La
+                función que se define entre las líneas 3 y 8 corre una vez se haga click al botón.
               </p>
               <p>
                 Lo que hace esta función es: primero obtiene una fecha y la muestra por consola.
-                Luego calcula 20 millones de veces la fecha, y la muestra nuevamente por consola. El
+                Luego calcula 10 millones de veces la fecha, y la muestra nuevamente por consola. El
                 ejemplo es claramente ridículo, pero demuestra como una operación que consume mucho
                 tiempo, inhabilita el navegador.
               </p>
@@ -105,7 +105,7 @@
             </aside>
           </section>
           <section>
-            Para evitar el código bloqueante, para por ejemplo, no congelar el navegador mientras
+            Para evitar el código bloqueante, por ejemplo para no congelar el navegador mientras
             pedimos información a un servidor, hacemos uso de código que corre de forma asíncrona.
           </section>
         </section>
@@ -280,7 +280,7 @@
             <p>La operación falló, retornando un error</p>
         </section>
         <section>
-          <p>Para usar una promesa, se encadenan metodos, que ejecutarán callbacks según lo que suceda con la respuesta. Estos callbacks recibirán los datos que podemos manejar dentro de estas funciones. Los metodos son:</p>
+          <p>Para usar una promesa, se encadenan métodos, que ejecutarán callbacks según lo que suceda con la respuesta. Estos callbacks recibirán los datos que podemos manejar dentro de estas funciones. Los métodos son:</p>
           <ul>
             <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/then">then</a></li>
             <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/catch">catch</a></li>
@@ -307,14 +307,14 @@
         <h3>async / await</h3>
         <section>
           <p>
-            Declarar funciones como <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asincrona">async</a> nos permite usar una santaxis más simple para utilizar promesas, habilitandonos el uso de la palabra clave <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/await">await</a>. 
+            Declarar funciones como <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asincrona">async</a> nos permite usar una sintaxis más simple para utilizar promesas, habilitándonos el uso de la palabra clave <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/await">await</a>. 
           </p>
           <p>
             El código luce como si fuera síncrono!
           </p>
         </section>
         <section>
-          Reescribamos esta funcion con promesas usando async/await
+          Reescribamos esta función con promesas usando async/await
           <div class="fragment" data-fragment-index=0>
             <pre><code data-trim data-line-numbers= class="lang-javascript">
               function obtenerDatos() {
