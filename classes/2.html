@@ -113,13 +113,120 @@
             </li>
           </ul>
           <pre><code data-line-numbers data-trim class="lang-html">
-        <p class="access-text"> Esto contiene un párrafo</p>
+        <p class="access-text">Esto contiene un párrafo</p>
       </code></pre>
         </section>
 
         <section>
           <h6>Anidación de elementos</h6>
+          <ul>
+            <li>
+              Los elementos se pueden anidar, es decir, colocar elementos dentro de otro elemento.
+            </li>
+            <li>
+              Se recomienda siempre cerrar los tags aninados en orden inverso al que comienzan.
+              Es decir, en el ejemplo debajo, el tag &lt;em&gt cierra primero ya que fue el último tag en comenzar. 
+            </li>
+          </ul>
+          <pre><code data-line-numbers data-trim class="lang-html">
+            <strong>My bold text and <em>my bold and emphasized text</em></strong>
+          </code></pre>
+          <strong>My bold text and <em>my bold and emphasized text</em></strong>
+        </section>
 
+        <section>
+          <h6>Listas</h6>
+          <ul>
+            <li>
+              Las listas forman parte de nuestras vidas. Desde una lista de supermercado hasta los temas de un examen que tenemos que estudiar
+            </li>
+            <li>
+              Dentro de las listas tenemos dos tipos: desordenadas y ordenadas
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h6>Listas desordenadas</h6>
+          <ul>
+            <li>
+             En este tipo de listas, no importa el orden de los elementos a mostrar
+            </li>
+          </ul>
+          <pre><code data-line-numbers data-trim class="lang-html">
+            <ul>
+              <li>Yogurt</li>
+              <li>Huevos</li>
+              <li>Pan</li>
+            </ul>
+          </code></pre>
+          <ul>
+            <li>Yogurt</li>
+            <li>Huevos</li>
+            <li>Pan</li>
+          </ul>
+        </section>
+        <section>
+          <h6>Listas ordenadas</h6>
+          <ul>
+            <li>
+             En este tipo de listas, si importa el orden
+            </li>
+          </ul>
+          <pre><code data-line-numbers data-trim class="lang-html">
+            <ol>
+              <li>Subirse al ómnibus</li>
+              <li>Pagar el boleto</li>
+              <li>Tomar asiento</li>
+            </ol>
+          </code></pre>
+          <ol>
+            <li>Subirse al ómnibus</li>
+            <li>Pagar el boleto</li>
+            <li>Tomar asiento</li>
+          </ol>
+        </section>
+        <section>
+          <h6>Imagen en HTML</h6>
+          <ul>
+            <li>
+             Para utilizar imagenes, usamo el tag img
+            </li>
+            <li>
+              alt es requerido y especifica una alternativa a la imagen en caso de no poder mostrarla
+            </li>
+          </ul>
+          <pre><code data-line-numbers data-trim class="lang-html">
+            <img alt="toy-story" style="height: 200px" src="https://bit.ly/3cDyBRu" />
+          </code></pre>
+          <img alt="toy-story" style="height: 200px" src="https://bit.ly/3cDyBRu" />
+        </section>
+        <section>
+          <h6>Links</h6>
+          <ul>
+            <li>En HTML los links son llamados hipervínculos o hyperlinks</li>
+            <li>Al seleccionar un link, este te redirige a otro documento</li>
+            <li>Al poner el mouse sobre un link, el puntero cambiará de una flecha a una mano</li>
+            <li>target especifica dónde abrir el nuevo documento</li>
+          </ul>
+          <pre><code data-line-numbers data-trim class="lang-html">
+            <a href="https://bit.ly/3cDyBRu" target="_blank">Toy Story</a>
+          </code></pre>
+          <a href="https://bit.ly/3cDyBRu" target="_blank">Toy Story</a>
+        </section>
+        <section>
+          <h6>Bloques</h6>
+          <ul>
+            <li>
+             Para organizar el contenido y poder darle de manera sencilla estilo, podemos usar contenedores:
+            </li>
+            <li>
+              &lt;div&gt;, &lt;span&gt;
+            </li>
+          </ul>
+          <pre><code data-line-numbers data-trim class="lang-html">
+            <div><p>Esto es un texto</p></div>
+          </code></pre>
+          <div><p>Esto es un texto</p></div>
         </section>
       </section>
 
