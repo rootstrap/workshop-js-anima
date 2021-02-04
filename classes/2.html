@@ -1025,7 +1025,7 @@
         </section>
 
         <section>
-          Para acceder obtener un elemento del HTML podemos utilizar algunas de las siguientes instrucciones:
+          Para obtener un elemento del HTML podemos utilizar algunas de las siguientes instrucciones:
           <ul>
             <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">document.querySelector</a></li>
             <li><a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByName">document.getElementsByName</a></li>
@@ -1047,19 +1047,6 @@
             // Actualizamos sus propiedades.
             link.textContent = 'Hola Mundo';
             link.href = 'https://rootstrap.github.io/workshop-js-anima';
-          </code></pre>
-
-        </section>
-
-        <section>
-          Con <b>document</b> también podemos crear nuevos elementos y agregarlos al HTML.
-          <pre><code data-line-numbers data-trim class="lang-javascript">
-            const seccion = document.querySelector('section');
-
-            const parrafo = document.createElement('p');
-            parrafo.textContent = 'Esto es un nuevo párrafo!';
-
-            seccion.appendChild(parrafo);
           </code></pre>
 
         </section>
@@ -1107,7 +1094,7 @@
 
         <section>
           <p>Existe una gran cantidad de eventos que podemos manejar en JavaScript y que son comunes a todos los elementos del DOM.</p>
-          <p>Tambien existen algunos eventos que son particulares de un tipo de etiquetas, por ejemplo el evento <b>submit</b> en los formularios, que es disparado cuando apretamos el botón para enviarlo.</p>
+          <p>También existen algunos eventos que son particulares de un tipo de etiquetas, por ejemplo el evento <b>submit</b> en los formularios, que es disparado cuando apretamos el botón para enviarlo.</p>
         </section>
 
         <section>
