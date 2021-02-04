@@ -232,7 +232,7 @@
           <br> --- <br>
           <a target="_blank" href="https://codesandbox.io/s/restless-glade-jhwe4">CodeSandbox</a>
           <aside class="notes">
-            Vamos a ver esto muy brevemente y sin mucho enfasis, dado que es una manera ya no muy utilizada de hacer requests a un server. En la práctica, esto está abstraído y su uso facilitado por una librería, o se utiliza una nueva API que provéen los navegadores modernos.
+            Vamos a ver esto muy brevemente y sin mucho énfasis, dado que es una manera ya no muy utilizada de hacer requests a un server. En la práctica, esto está abstraído y su uso facilitado por una librería, o se utiliza una nueva API que proveen los navegadores modernos.
           </aside>
         </section>
         <section>
@@ -289,7 +289,7 @@
             <img style="max-width: 80%;" src="../assets/promisesFullDiagram.png" alt="">
             <aside class="notes">
               <p>
-                Los 3 estados de una promesa son los que ven allí. Pending es el estado inicial, y el que tendremos mientras no se concrete una respuesta. De cualminar con éxito, pasará al estado fulfilled (o cumplida en español), y de haber algún error, al estado rejected (o rechazada en español)
+                Los 3 estados de una promesa son los que ven allí. Pending es el estado inicial, y el que tendremos mientras no se concrete una respuesta. De culminar con éxito, pasará al estado fulfilled (o cumplida en español), y de haber algún error, al estado rejected (o rechazada en español)
               </p>.
               <p>
                 Como decíamos antes, cada uno de estos estados, salvo el pending, tiene asociados al menos un método. Cuando la promesa se cumple, se ejecuta el método then, que va a disparar el callback de éxito que le hayamos asociado. Todo esto lo tendremos ya definido. A este callback se la pasará como parámetro los datos de la promesa resuelta, para que podamos utilizarlos. 
@@ -335,7 +335,7 @@
           </code></pre>
           <aside>
             <p>
-              Veamos un ejemplo que seguro dejará todo un poco más claro y repasamos un poco lo que veniamos hablando. En la primera linea, usamos el método fetch, que nos va a devolver una promesa que guardamos en la constante promesa. La api fetch para hacer un get solo necesita la URL. El uso sería similar para otras funciones que retornan promesas, las podemos guardar en constantes o variables como cualquier otro objeto.
+              Veamos un ejemplo que seguro dejará todo un poco más claro y repasamos un poco lo que veníamos hablando. En la primer línea, usamos el método fetch, que nos va a devolver una promesa que guardamos en la constante promesa. La api fetch para hacer un get solo necesita la URL. El uso sería similar para otras funciones que retornan promesas, las podemos guardar en constantes o variables como cualquier otro objeto.
             </p>>
             <p>
               En la línea 2, encadenamos el método then, y entre paréntesis pasamos nuestra función callback. Como ven, toma un parámetro respuesta, donde tendremos la respuesta que nos retorne fetch. La respuesta tiene más información que solo los datos, pero nos brinda un método json para darnos los datos directamente. La particularidad de este metodo json es que devuelve una promesa. Como los métodos then son encadenables, el siguiente método then en la cadena, que tiene su declaración de callback en la linea 4, recibirá los datos contenidos en esa segunda promesa cuando se resuelva, que son los datos que buscamos. Y en la línea 5 los mostramos por consola.
