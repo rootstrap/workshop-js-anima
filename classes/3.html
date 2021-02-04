@@ -231,37 +231,46 @@
           Se utiliza XHR (sigla para <a href="https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>) para ejecutar AJAX en páginas web. 
           <br> --- <br>
           <a target="_blank" href="https://codesandbox.io/s/restless-glade-jhwe4">CodeSandbox</a>
+          <aside class="notes">
+            Vamos a ver esto muy brevemente y sin mucho enfasis, dado que es una manera ya no muy utilizada de hacer requests a un server. En la práctica, esto está abstraído y su uso facilitado por una librería, o se utiliza una nueva API que provéen los navegadores modernos.
+          </aside>
         </section>
         <section>
           <h3>XHR</h3>
           Request AJAX utilizando método 'GET'
-          <pre><code data-trim data-line-numbers class="lang-javascript">
+          <pre><code data-trim data-line-numbers="1|2|4-9|11-14|16-17" class="lang-javascript">
             const xhr = new XMLHttpRequest();
-            xhr.open(
-              "GET",
-              "https://gist.githubusercontent.com/spereztoledo/d7740ac1ad1212ce8810c5c809d7acd3/raw/d57477f19d8e173b8671ffff9494db75e246d4e7/quotes.json"
-            );
+            xhr.open('GET', 'https://api.com/datos');
           
-            // Callback para cambio de estado en el request
-            xhr.onreadystatechange = function () {
-              let DONE = 4; // readyState 4 => el request esta pronto.
-              let OK = 200; // status 200 => retorno exitoso.
-              if (xhr.readyState === DONE) {
-                if (xhr.status === OK) {
-                  // convertir respuesta a JSON 
-                  // ya que xhr solo responde texto o XML
-                  const response = JSON.parse(xhr.responseText);
-                  console.log(response);
-                } else {
-                  // Ocurrió un error durante el request.
-                  console.log("Error: " + xhr.status); 
-                }
-              }
+            // Callback al finalizar correctamente
+            xhr.onload = function () {
+              // convertir respuesta a JSON a partir del texto
+              const response = JSON.parse(xhr.responseText);
+              console.log(response);
+            }
+
+            // Callback de error en el request.
+            xhr.onerror = function () {
+              console.log('Error: ' + xhr.statusText); 
             };
           
-            // Enviar el request hacia quotes.json
+            // Enviar el request hacia el servidor
             xhr.send();
           </code></pre>
+          <aside class="notes">
+            <p>
+              En la primera línea, generamos un nuevo objeto XHR, que nos permite generar un request. En la línea 2, usamos el método open, al que le pasaremos 2 parámetros. El primero siendo el método HTTP, en este caso un GET para obtener información, pero funciona de forma similar con otros como POST y PUT.
+            </p>
+            <p>
+              Entre las líneas 5 y 9, adjuntamos nuestro callback onload para ser ejecutado cuando tengamos una respuesta satisfactoria. La respuesta estará disponible dentro del objeto xhr, en la propiedad responseText. Parseamos ese objeto, para obtener un objeto javascript y utilizarlo en nuestro código.
+            </p>
+            <p>
+              Entre las líneas 12 y 14, adjuntamos nuestro callback onerror para ser ejecutado cuando tengamos una respuesta de error. El código HTTP de la respuesta es lo que mostramos en este caso. El tipo de error y lo que envíe el servidor en response puede ayudarnos a saber que sucedió, pero el status lo tendremos siempre.
+            </p>
+            <p>
+              Por último, en la línea 17, ejecutamos el método send, que envía el request al servidor, y quedamos a la espera de una respuesta, sabiendo que al tenerla se ejecutará el callback adecuado.
+            </p>
+          </aside>
         </section>
       </section>
       <!-- Promesas y fetch API -->
@@ -270,17 +279,33 @@
         <section>
           Una <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise">promesa</a> es un objeto que representa el estado de una operación asíncrona. El navegador nos promete retornar una respuesta cuando la reciba, si la recibe
         </section>
-        <section>
-          <h3> Estados de una promesa</h3>
-            <h4 style="color:blue">pending</h4>
-            <p>Estado inicial, ni completada ni rechazada</p>
-            <h4 style="color:green">fulfilled</h4>
-            <p>Completada satisfactoriamente, retornando un valor</p>
-            <h4 style="color:red">rejected</h4>
-            <p>La operación falló, retornando un error</p>
+         <section>
+          <img src="../assets/promisesDiagram.png" alt="">
+          <aside class="notes">
+            Como ven en el diagrama, una promesa tiene diferentes estados. Al cambiar de estado, se ejecutarán los métodos asociados, que dispararán callbacks que definiremos de antemano para cada uno de estos métodos.
+          </aside>
         </section>
         <section>
-          <p>Para usar una promesa, se encadenan métodos, que ejecutarán callbacks según lo que suceda con la respuesta. Estos callbacks recibirán los datos que podemos manejar dentro de estas funciones. Los métodos son:</p>
+            <img style="max-width: 80%;" src="../assets/promisesFullDiagram.png" alt="">
+            <aside class="notes">
+              <p>
+                Los 3 estados de una promesa son los que ven allí. Pending es el estado inicial, y el que tendremos mientras no se concrete una respuesta. De cualminar con éxito, pasará al estado fulfilled (o cumplida en español), y de haber algún error, al estado rejected (o rechazada en español)
+              </p>.
+              <p>
+                Como decíamos antes, cada uno de estos estados, salvo el pending, tiene asociados al menos un método. Cuando la promesa se cumple, se ejecuta el método then, que va a disparar el callback de éxito que le hayamos asociado. Todo esto lo tendremos ya definido. A este callback se la pasará como parámetro los datos de la promesa resuelta, para que podamos utilizarlos. 
+              </p>
+              <p>
+                De manera similar pasa cuando la promesa es rechazada. Se dispara el método catch, que ejecutará nuestro callback de error. Este callback de error tendrá también un parámetro, que tendrá información sobre el error, que puede ser útil para recuperarse de él, reintentar o comunicar el error al usuario.
+              </p>
+              <p>
+                Existe un tercer método, llamado finally, que no está en el diagrama simplemente para no complicarlo, pero que se va a ejecutar cuando la promesa se cumpla o se rechace, y será luego del metodo then o catch, segun lo que suceda. Este tiene asociado su propio callback.
+              </p>
+            </aside>
+       </section>
+        <section>
+          <p>Para usar una promesa, asociamos callbacks a los métodos disponibles. Al cambiar el estado de la promesa, se ejecutarán  los callbacks correspondientes.</p>
+          <p>Estos callbacks se invocarán con los datos buscados o información sobre el error ocurrido como parámetros</p>
+          <p>Los métodos son:</p>
           <ul>
             <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/then">then</a></li>
             <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise/catch">catch</a></li>
@@ -288,11 +313,18 @@
           </ul>
         </section>
         <section>
+          <p>Estos metodos pueden a su vez encadenarse, dado que retornan a su vez promesas. Los callbacks sobre estos métodos, pueden retornar valores y estarán disponibles para los siguientes en la cadena.
+          </p>
+          <p>
+            Lo retornado por estos callbacks, estarán disponibles para los siguientes métodos en la cadena. </p>
+        </section>
+        
+        <section>
           Un buen ejemplo de uso de promesas es la API <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API">fetch</a>. Esta facilita el manejo de peticiones y respuestas a un servidor, en comparación con XHR.
-          <pre><code data-trim data-line-numbers="1|2|3|7|8|9|10|11|1-12" class="lang-javascript">
+          <pre><code data-trim data-line-numbers="1|2|3|5|6|7|8|9|10|11|1-12" class="lang-javascript">
             const promesa = fetch("https://api.ejemplo.com/datos");
-            promesa.then(function (data) {
-                return data.json();
+            promesa.then(function (respuesta) {
+                return respuesta.json();
             }).then(function (json){
                 console.log(json);
             }).catch(function (error) {
@@ -301,6 +333,20 @@
                 console.log('Fin de ejecución de fetch');
             });
           </code></pre>
+          <aside>
+            <p>
+              Veamos un ejemplo que seguro dejará todo un poco más claro y repasamos un poco lo que veniamos hablando. En la primera linea, usamos el método fetch, que nos va a devolver una promesa que guardamos en la constante promesa. La api fetch para hacer un get solo necesita la URL. El uso sería similar para otras funciones que retornan promesas, las podemos guardar en constantes o variables como cualquier otro objeto.
+            </p>>
+            <p>
+              En la línea 2, encadenamos el método then, y entre paréntesis pasamos nuestra función callback. Como ven, toma un parámetro respuesta, donde tendremos la respuesta que nos retorne fetch. La respuesta tiene más información que solo los datos, pero nos brinda un método json para darnos los datos directamente. La particularidad de este metodo json es que devuelve una promesa. Como los métodos then son encadenables, el siguiente método then en la cadena, que tiene su declaración de callback en la linea 4, recibirá los datos contenidos en esa segunda promesa cuando se resuelva, que son los datos que buscamos. Y en la línea 5 los mostramos por consola.
+            </p>
+            <p>
+              En la línea 6, encadenamos nuestro método catch, para capturar algún error que pueda darse en la cadena, y tenemos el parámetro error donde tendremos mayor información del error.
+            </p>
+            <p>
+              Por último, tenemos el método finally, que como les contaba, se va a ejecutar una vez que tengamos una respuesta, con o sin erorr, con la diferencia de que finally no recibe ningún parámetro.
+            </p>
+          </aside>
         </section>
       </section>
       <section>
