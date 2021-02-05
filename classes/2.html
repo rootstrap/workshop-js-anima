@@ -134,8 +134,127 @@
         <h3>Intro a CSS</h3>
         <section>
           <h6>Qué es CSS?</h6>
+          <ul>
+            <li>CSS (Cascading Style Sheets) es un lenguaje de stylesheet
+            </li>
+            <li>
+              Se utiliza para aplicar colores, tamaños y más estilos a las páginas en HTML
+            </li>
+            <li>
+              Se basa en conjuntos de reglas que se aplican a grupos de elementos de HTML mediante selectores
+            </li>
+            <li>
+              Ejemplo:
+              <pre><code data-line-numbers data-trim class="lang-css">div { background-color: #FF0000 }</code></pre>
+            </li>
+          </ul>
         </section>
+        <section>
+          <h6>¿Cómo insertar código CSS?</h6>
+          <ul>
+            <li>Código "inline":
+              <pre><code data-line-numbers data-trim class="lang-html">
+                <div style="background-color: red;">
+                </div>
+              </code></pre>
+            </li>
+            <li>Código directo:
+              <pre><code data-line-numbers data-trim class="lang-html">
+                <style type="text/css">
+                  /* Código CSS */
+                </style>
+              </code></pre>
+            </li>
+            <li>
+              En archivo `.css`:
+              <pre><code data-line-numbers data-trim class="lang-html">
+                <link rel="stylesheet" href="prueba.css" />
+              </code></pre>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h6>Fundamentos de CSS</h6>
+          <p>Composición de una regla de CSS:</p>
 
+          <img id="clase_2_css_diagrama" src="../assets/clase_2_css_diagrama.png" alt="diagrama de css"/>
+        </section>
+        <section>
+          <h6>Selectores básicos</h6>
+          <pre>
+            <code data-line-numbers data-trim class="lang-html">
+              <!-- index.html -->
+              <div id="caja-roja"></div>
+              <div class="texto-grande">Texto</div>
+            </code>
+            <code data-line-numbers data-trim class="lang-css">
+                /* estilos.css */
+                /* tags */
+                body, div, p, h1, h2, h3, span, img { display: none; }
+                /* ids */
+                #caja-roja { background-color: red; }
+                /* classes */
+                .texto-grande { font-size: 30px; }
+              </code>
+          </pre>
+        </section>
+        <section>
+          <h6>Selectores Compuestos</h6>
+          <pre>
+            <code data-line-numbers data-trim class="lang-html">
+              <!-- index.html -->
+              <div class="caja">
+                <p>Texto</p> <!-- No se ve afectado por el estilo -->
+              </div>
+              <div class="caja seccion">
+                <p>Texto</p> <!-- Si se ve afectado por el estilo -->
+              </div>
+            </code>
+            <code data-line-numbers data-trim class="lang-css">
+              /* estilos.css */
+              .caja.seccion p { font-size: 30px; }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h6>Reglas básicas</h6>
+          <pre>
+            <code data-line-numbers data-trim class="lang-css">
+                /* estilos.css */
+                div { 
+                  margin: 0 40px 10px 20px;
+                  padding: 10px;
+                  background-color: red;
+                  width: 200px;
+                  height: 100px;
+                  border: 1px solid black;
+                  border-radius: 5px;
+                }
+                h1 {
+                  font-size: 30px;
+                  color: blue;
+                  line-height: 2;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                }
+              </code>
+          </pre>
+        </section>
+        <section>
+          <h6>Inspeccionar CSS</h6>
+          <img id="clase_2_inspector_css" src="../assets/clase_2_inspector_css.png" alt="inspector de css"/>
+        </section>
+        <section>
+          <h6>Recursos útiles</h6>
+          <ul>
+            <li>
+              <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS básico por Mozzila</a>
+            </li>
+            <li>
+              <a href="https://flexboxfroggy.com/#es">Flexbox Froggy:</a> distribución y posicionamiento de elementos
+            </li>
+          </ul>
+        </section>
       </section>
 
 
