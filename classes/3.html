@@ -28,7 +28,6 @@
         <section>
           <h3>Agenda</h3>
           <ol>
-            <li>Repaso de JS basico</li>
             <li>¿Que es asincronía?</li>
             <li>Funciones callback</li>
             <li><code>setTimeout</code> y <code>setInterval</code></li>
@@ -107,22 +106,23 @@
         <section>
           Una función callback es aquella que es pasada por parámetro a otra función o asignada a un atributo, para luego ser invocada.
           <pre><code data-trim data-line-numbers class="lang-javascript">
-            function greeting(name) {
-              alert('Hola ' + name);
+            const saludo = function (nombre) {
+              alert('Hola ' + nombre);
             };
 
-            function processUserInput(callback) {
-              var name = prompt('Por favor ingresa tu nombre');
-              callback(name);
+            function pedirNombre(callback) {
+              let nombre = prompt('Por favor ingresa tu nombre');
+              callback(nombre);
             };
 
-            processUserInput(greeting);
+            pedirNombre(saludo);
           </code></pre>
           <aside class="notes">
             - Las funciones son Objetos, pasables por parametro
             - Con `function` definimos la funcion, no se ejecuta. se usa ()
-            - la función processUserInput recibe greeting sin los paréntesis
+            - la función pedirNombre recibe saludo sin los paréntesis
             - Hoisting. No usen var.
+            - Notar que la función saludo, es una función anónima asignada a una constante.
             - Quien recibe al callback define cuando se lo ejecuta.
             - Ejemplo document.onclick
           </aside>
@@ -135,9 +135,9 @@
               console.log("El usuario hizo click en el botón!");
             };
 
-            const button = document.queryselector("#callback-btn")
+            const boton = document.queryselector("#callback-btn")
             
-            button.addEventListener("click", callback);
+            boton.addEventListener("click", callback);
           </code></pre>
 
           <aside class="notes">
