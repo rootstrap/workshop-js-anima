@@ -37,13 +37,6 @@
             <li><code>async</code> / <code>await</code></li>
           </ol>
         </section>
-        
-        <!-- Repaso -->
-        <section>
-          <h3>Repaso</h3>
-          <section>Recap slide 1</section>
-          <section>Recap slide 2</section>
-        </section>
 
         <!-- Intro a asincronía -->
         <section>
@@ -66,6 +59,16 @@
           </section>
           <section>
             <img src="../assets/syncVsAsync.png" alt="">
+            <aside class="notes">
+              <p>
+                - Analogia: Sync = videollamada, async = chat
+                - Ambientes en que corre javascript
+                - Conocimiento de cliente/servidor
+                - Navegador es nuestro cliente
+                - De ser síncrono, el navegador queda bloqueado
+                - Se puede hacer asíncrono, de varias formas
+              </p>
+            </aside>
           </section>
           <section>
             <p>
@@ -86,22 +89,10 @@
             </code></pre>
             <iframe data-src="../ejemplos/async/blocking.html" height="100px" width="800px"> </iframe>
             <aside class="notes">
-              <p>
-                El código que vemos acá corre sobre un html con un botón. En la primer linea vemos
-                que lo selecciona y en la segunda se agrega un manejador para el evento click. La
-                función que se define entre las líneas 3 y 8 corre una vez se haga click al botón.
-              </p>
-              <p>
-                Lo que hace esta función es: primero obtiene una fecha y la muestra por consola.
-                Luego calcula 10 millones de veces la fecha, y la muestra nuevamente por consola. El
-                ejemplo es claramente ridículo, pero demuestra como una operación que consume mucho
-                tiempo, inhabilita el navegador.
-              </p>
-              <p>
-                Mientras se ejecuta el loop, el control queda allí y no es devuelto al navegador
-                para continuar actualizando la pantalla o continuar ejecutando código. A esto se le
-                llama "código bloqueante".
-              </p>
+              - Un ejemplo horrible.
+              - Hablar de funciones anónimas.
+              - Este código bloquea al navegador.
+              - Algo similar pasaría si esperaramos la respuesta del servidor
             </aside>
           </section>
           <section>
@@ -114,8 +105,7 @@
       <section>
         <h3>Callbacks</h3>
         <section>
-          Una función callback es aquella que es pasada por parámetro a otra función, para luego ser invocada
-          internamente.
+          Una función callback es aquella que es pasada por parámetro a otra función o asignada a un atributo, para luego ser invocada.
           <pre><code data-trim data-line-numbers class="lang-javascript">
             function greeting(name) {
               alert('Hola ' + name);
@@ -129,9 +119,12 @@
             processUserInput(greeting);
           </code></pre>
           <aside class="notes">
-            Al utilizar la palabra reservada function, podemos declarar funciones, pero éstas no son invocadas en ese momento sino que se deben invocar de manera manual utilizando el nombre de la función declarada y agregandole los parámetros entre paréntesis (o paréntesis vacíos si no espera parámetros ej: nombreFuncion()).
-            <br>
-            Notar en el ejemplo que la función processUserInput recibe greeting sin los paréntesis, es decir que no la estamos invocando.
+            - Las funciones son Objetos, pasables por parametro
+            - Con `function` definimos la funcion, no se ejecuta. se usa ()
+            - la función processUserInput recibe greeting sin los paréntesis
+            - Hoisting. No usen var.
+            - Quien recibe al callback define cuando se lo ejecuta.
+            - Ejemplo document.onclick
           </aside>
         </section>
         <section>
@@ -148,9 +141,9 @@
           </code></pre>
 
           <aside class="notes">
-            Al manejar eventos del DOM utilizando la API document, la función que utilizamos como callback siempre recibe como parámetro el evento que está manejando, el cuál en este caso es el click.
-            <br>
-            En nuestra función podemos interacutar con ese evento para por ejemplo evitar una redirección u obtener el elemento que lanzó el evento.
+            - Ejemplo document.click en consola
+            - Podemos usar el evento en la función
+            - Mostrar que la función se puede declarar con nombre = f
           </aside>
         </section>
       </section>
@@ -229,11 +222,6 @@
         <section>
           <h3>XHR</h3>
           Se utiliza XHR (sigla para <a href="https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>) para ejecutar AJAX en páginas web. 
-          <br> --- <br>
-          <a target="_blank" href="https://codesandbox.io/s/restless-glade-jhwe4">CodeSandbox</a>
-          <aside class="notes">
-            Vamos a ver esto muy brevemente y sin mucho énfasis, dado que es una manera ya no muy utilizada de hacer requests a un server. En la práctica, esto está abstraído y su uso facilitado por una librería, o se utiliza una nueva API que proveen los navegadores modernos.
-          </aside>
         </section>
         <section>
           <h3>XHR</h3>
@@ -278,6 +266,9 @@
         <h3>Promesas</h3>
         <section>
           Una <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise">promesa</a> es un objeto que representa el estado de una operación asíncrona. El navegador nos promete retornar una respuesta cuando la reciba, si la recibe
+          <aside class="notes">
+            - Analogía con promesa real.
+          </aside>
         </section>
          <section>
           <img src="../assets/promisesDiagram.png" alt="">
@@ -316,34 +307,61 @@
           <p>Estos metodos pueden a su vez encadenarse, dado que retornan a su vez promesas. Los callbacks sobre estos métodos, pueden retornar valores y estarán disponibles para los siguientes en la cadena.
           </p>
         </section>
+        <section>
+          Ejemplo abstracto
+          <pre><code data-trim data-line-numbers class="lang-javascript">
+            promesa
+            .then(callbackExito)
+            .catch(callbackError)
+            .finally(callbackFinal);
+          </code></pre>
+          <aside class="notes">
+            - Las promesas son encadenables, por eso se puede escribir asi
+            - Los metodos de las promesas, retornan promesas.
+          </aside>
+        </section>
         
         <section>
           Un buen ejemplo de uso de promesas es la API <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API">fetch</a>. Esta facilita el manejo de peticiones y respuestas a un servidor, en comparación con XHR.
-          <pre><code data-trim data-line-numbers="1|2|3|5|6|7|8|9|10|11|1-12" class="lang-javascript">
-            const promesa = fetch("https://api.ejemplo.com/datos");
-            promesa.then(function (respuesta) {
+          <pre><code data-trim data-line-numbers="1|4-6|7-9|1-9" class="lang-javascript">
+            const promesa = fetch("https://api.com/datos");
+            
+            promesa
+            .then(function (respuesta) {
                 return respuesta.json();
-            }).then(function (json){
-                console.log(json);
-            }).catch(function (error) {
-                console.log("Error:" + error); 
-            }).finally(function (){
-                console.log('Fin de ejecución de fetch');
-            });
+            })
+            .then(function (data){
+                console.log(data);
+            })
           </code></pre>
-          <aside>
-            <p>
-              Veamos un ejemplo que seguro dejará todo un poco más claro y repasamos un poco lo que veníamos hablando. En la primer línea, usamos el método fetch, que nos va a devolver una promesa que guardamos en la constante promesa. La api fetch para hacer un get solo necesita la URL. El uso sería similar para otras funciones que retornan promesas, las podemos guardar en constantes o variables como cualquier otro objeto.
-            </p>>
-            <p>
-              En la línea 2, encadenamos el método then, y entre paréntesis pasamos nuestra función callback. Como ven, toma un parámetro respuesta, donde tendremos la respuesta que nos retorne fetch. La respuesta tiene más información que solo los datos, pero nos brinda un método json para darnos los datos directamente. La particularidad de este metodo json es que devuelve una promesa. Como los métodos then son encadenables, el siguiente método then en la cadena, que tiene su declaración de callback en la linea 4, recibirá los datos contenidos en esa segunda promesa cuando se resuelva, que son los datos que buscamos. Y en la línea 5 los mostramos por consola.
-            </p>
-            <p>
-              En la línea 6, encadenamos nuestro método catch, para capturar algún error que pueda darse en la cadena, y tenemos el parámetro error donde tendremos mayor información del error.
-            </p>
-            <p>
-              Por último, tenemos el método finally, que como les contaba, se va a ejecutar una vez que tengamos una respuesta, con o sin erorr, con la diferencia de que finally no recibe ningún parámetro.
-            </p>
+          <aside class="notes">
+            - fetch retorna una promesa, 
+            - Se resuelve antes de tener todo el contenido, con los headers
+            - Catch captura errores en la cadena
+            - Diferencia con hacer varios promise.then sin encadenar
+            - callback a finally no recibe parametros
+          </aside>
+        </section>
+        <section>
+          También podemos crear nuestra propia promesa. Simulemos tirar una moneda.
+          <pre><code data-trim data-line-numbers="1|2-7|10-12" class="lang-javascript">
+            const moneda = new Promise(
+              function(resolve, reject){
+                if (Math.random() > 0.5){
+                  resolve('cara!');
+                }
+                reject('cruz!');
+              }
+            );
+
+            moneda
+            .then(console.log)
+            .catch(console.log);
+          </code></pre>
+          <aside class="notes">
+            - Resolve cumple la promesa => se ejecuta el then
+            - Reject rechaza la promesa => se ejecuta el catch
+            - La promesa no puede cambiar, su valor es final
           </aside>
         </section>
       </section>
@@ -355,6 +373,14 @@
           </p>
           <p>
             El código luce como si fuera síncrono!
+          </p>
+        </section>
+        <section>
+          <p>
+            La palabra clave <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/await">await</a> nos permite esperar, de manera asíncrona, a la respuesta de una promesa.
+          </p>
+          <p>
+            La palabra clave <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asincrona">async</a>, define una función asíncrona, y nos habilita a usar la palabra clave await.
           </p>
         </section>
         <section>
@@ -380,8 +406,41 @@
               }
             </code></pre>
           </div>
+          <aside class="notes">
+            - Mismo ejemplo visto con promesas recien
+            - Nuevo ejemplo, explicar uso de async
+            - Uso de await
+          </aside>
+        </section>
+        <section>
+          <p>
+            Los rechazos en nuestras promesas, usando async/await también lucen como código síncrono. 
+          </p>
+          <p>
+            Usamos un bloque try/catch para capturar los errores, de la misma forma que lo haríamos con excepciones.
+          </p>
+          <pre><code data-trim data-line-numbers class="lang-javascript">
+            async function obtenerDatos() {
+              try {
+                const respuesta = await fetch("https://api.com/datos");
+                const data = await respuesta.json();
+                console.log(data);
+              }
+              catch(error) {
+                console.log(error.message);
+              }
+            }
+          </code></pre>
         </section>
       </section>
+      <section>
+        <h3>Tarea</h3>
+        <section>
+          <p>Entrar al siguiente link para realizar la tarea</p>
+          <p><a href="https://codesandbox.io/s/quotes-ejercicio-guvsk?file=/README.md" target="_blank">Ejercicio</a></p>
+          <p>El link a la solución se agregará luego de finalizada la clase</p>
+        </section>
+    </section>
     </div>
   </div>
 
