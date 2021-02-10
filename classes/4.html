@@ -71,6 +71,122 @@
         <!-- Handling Events -->
         <section>
           <h3>Manejo de Eventos</h3>
+
+          <section>
+            <p>
+              Los eventos son acciones que ocurren y provocan algún cambio o
+              notificación en el Sistema.
+            </p>
+            <p>
+              Cuando programamos nuestra página, nosotros decidimos sobre qué
+              eventos queremos reaccionar y cómo.
+            </p>
+          </section>
+
+          <section>
+            <h4>Tipos de Eventos</h4>
+            <p>Existen muchos tipos de eventos distintos, por ejemplo:</p>
+            <ul>
+              <li>Hacer click sobre algún elemento</li>
+              <li>Presionar alguna tecla</li>
+              <li>Pasar el mouse por arriba de algún elemento (hover)</li>
+              <li>Cambiar algún campo de un formulario (change)</li>
+              <li>Apretar el botón de confirmar de un formulario (submit)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h4>Detectar Eventos en React</h4>
+            <p>
+              Una forma de detectar el evento <b>click</b> es usando la
+              propiedad <b>onClick</b> de los elementos
+            </p>
+            <pre><code data-line-numbers data-trim class="language-html">
+				<button onClick={this.manejadorClick}>
+					PRESIONAME
+				</button>
+			</code></pre>
+            <p>
+              <b>manejadorClick</b> es una función definida dentro de la clase.
+              Para que funcione, es necesario hacer un bind en el constructor
+            </p>
+            <pre><code data-line-numbers data-trim class="language-javascript">
+				this.manejadorClick = this.manejadorClick.bind(this);
+			</code></pre>
+          </section>
+
+          <section>
+            <p>
+              Otra forma de detectar un evento es usando <b>listeners</b>, donde
+              se espera a que pase un determinado evento en un determinado
+              elemento.
+            </p>
+            <pre><code data-line-numbers data-trim class="lang-javascript">
+				// Evento click
+				boton.addEventListener('click', manejadorClick);
+	
+				// Envío de formulario
+				formulario.addEventListener('submit', manejadorSubmit);
+	
+				// Cuando el cursor pasa por arriba del elemento
+				elemento.addEventListener('hover', manejadorSubmit);
+	
+				// Cuando el usuario modifica un campo de un formulario
+				input.addEventListener('change', manejadorCambio);
+			</code></pre>
+          </section>
+
+          <section>
+            <p>
+              Cuando se usan <b>listeners</b>, hay que agregarlos cuando se
+              monta el componente y removerlos al desmontarlo.
+            </p>
+            <pre><code data-line-numbers data-trim class="lang-javascript">
+				import React, { Component } from 'react';
+				import ReactDOM from 'react-dom';
+				
+				class MiComponente extends Component {
+					constructor(props) {
+						super(props);
+					
+						this.manejadorEvento = this.manejadorEvento.bind(this);
+					}
+
+					manejadorEvento(evento) {
+						// el preventDefault es para evitar el comportamiento por defecto
+						evento.preventDefault();
+    		console.log('Ocurrio el evento');
+					}
+
+					componentDidMount() {
+						ReactDOM.findDOMNode(this).addEventListener('evento', this.manejadorEvento);
+					}
+
+					componentWillUnmount() {
+						ReactDOM.findDOMNode(this).removeEventListener('evento', this.manejadorEvento);
+					}
+				}
+			</code></pre>
+          </section>
+
+          <section>
+            <h4>Pasar parámetros a los manejadores</h4>
+            <p>
+              Muchas veces vamos a precisar mandar parámetros extra a la función
+              que maneja el evento, por ejemplo, un identificador
+            </p>
+            <pre><code data-line-numbers data-trim class="language-javascript">
+				"<button onClick={this.eliminarFila.bind(this,id)}>Eliminar Fila</button>"
+			</code></pre>
+            <p>La función <b>eliminarFila</b> va a recibir 2 parámetros:</p>
+            <ol>
+              <li><b>id:</b> identificador de la fila</li>
+              <li>
+                <b>evento: </b>no es necesario específicarlo, lo envía el
+                onClick automáticamente
+              </li>
+            </ol>
+          </section>
         </section>
 
         <!-- Conditional Rendering -->
