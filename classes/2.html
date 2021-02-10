@@ -1352,6 +1352,15 @@
         </section>
 
         <section>
+          Utilizando la propiedad innerHTML también podemos acceder al contenido de un elemento y/o actualizarlo. innerHTML devuelve un String que representa el contenido HTML de un elemento.
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            const parrafo = document.getElementById('parrafo');
+            parrafo.innerHTML = <i>Ahora el contenido de mi párrafo es cursiva</i>;
+          </code></pre>
+        </section>
+      </section>
+
+        <section>
           Con <b>document</b> también podemos crear nuevos elementos y agregarlos al HTML.
           <pre><code data-line-numbers data-trim class="lang-javascript">
             const seccion = document.querySelector('section');
