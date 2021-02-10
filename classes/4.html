@@ -102,17 +102,17 @@
               propiedad <b>onClick</b> de los elementos
             </p>
             <pre><code data-line-numbers data-trim class="language-html">
-				<button onClick={this.manejadorClick}>
-					PRESIONAME
-				</button>
-			</code></pre>
+              <button onClick={this.manejadorClick}>
+                PRESIONAME
+              </button>
+            </code></pre>
             <p>
               <b>manejadorClick</b> es una función definida dentro de la clase.
               Para que funcione, es necesario hacer un bind en el constructor
             </p>
             <pre><code data-line-numbers data-trim class="language-javascript">
-				this.manejadorClick = this.manejadorClick.bind(this);
-			</code></pre>
+              this.manejadorClick = this.manejadorClick.bind(this);
+            </code></pre>
           </section>
 
           <section>
@@ -122,18 +122,18 @@
               elemento.
             </p>
             <pre><code data-line-numbers data-trim class="lang-javascript">
-				// Evento click
-				boton.addEventListener('click', manejadorClick);
-	
-				// Envío de formulario
-				formulario.addEventListener('submit', manejadorSubmit);
-	
-				// Cuando el cursor pasa por arriba del elemento
-				elemento.addEventListener('hover', manejadorSubmit);
-	
-				// Cuando el usuario modifica un campo de un formulario
-				input.addEventListener('change', manejadorCambio);
-			</code></pre>
+              // Evento click
+              boton.addEventListener('click', manejadorClick);
+
+              // Envío de formulario
+              formulario.addEventListener('submit', manejadorSubmit);
+
+              // Cuando el cursor pasa por arriba del elemento
+              elemento.addEventListener('hover', manejadorHover);
+
+              // Cuando el usuario modifica un campo de un formulario
+              input.addEventListener('change', manejadorCambio);
+            </code></pre>
           </section>
 
           <section>
@@ -142,31 +142,31 @@
               monta el componente y removerlos al desmontarlo.
             </p>
             <pre><code data-line-numbers data-trim class="lang-javascript">
-				import React, { Component } from 'react';
-				import ReactDOM from 'react-dom';
-				
-				class MiComponente extends Component {
-					constructor(props) {
-						super(props);
-					
-						this.manejadorEvento = this.manejadorEvento.bind(this);
-					}
+              import React, { Component } from 'react';
+              import ReactDOM from 'react-dom';
 
-					manejadorEvento(evento) {
-						// el preventDefault es para evitar el comportamiento por defecto
-						evento.preventDefault();
-    		console.log('Ocurrio el evento');
-					}
+              class MiComponente extends Component {
+                constructor(props) {
+                  super(props);
 
-					componentDidMount() {
-						ReactDOM.findDOMNode(this).addEventListener('evento', this.manejadorEvento);
-					}
+                  this.manejadorEvento = this.manejadorEvento.bind(this);
+                }
 
-					componentWillUnmount() {
-						ReactDOM.findDOMNode(this).removeEventListener('evento', this.manejadorEvento);
-					}
-				}
-			</code></pre>
+                manejadorEvento(evento) {
+                  // el preventDefault es para evitar el comportamiento por defecto
+                  evento.preventDefault();
+                  console.log('Ocurrió el evento');
+                }
+
+                componentDidMount() {
+                  ReactDOM.findDOMNode(this).addEventListener('evento', this.manejadorEvento);
+                }
+
+                componentWillUnmount() {
+                  ReactDOM.findDOMNode(this).removeEventListener('evento', this.manejadorEvento);
+                }
+              }
+            </code></pre>
           </section>
 
           <section>
@@ -176,13 +176,13 @@
               que maneja el evento, por ejemplo, un identificador
             </p>
             <pre><code data-line-numbers data-trim class="language-javascript">
-				"<button onClick={this.eliminarFila.bind(this,id)}>Eliminar Fila</button>"
-			</code></pre>
+              "<button onClick={this.eliminarFila.bind(this,id)}>Eliminar Fila</button>"
+            </code></pre>
             <p>La función <b>eliminarFila</b> va a recibir 2 parámetros:</p>
             <ol>
               <li><b>id:</b> identificador de la fila</li>
               <li>
-                <b>evento: </b>no es necesario específicarlo, lo envía el
+                <b>evento: </b>no es necesario especificarlo, lo envía el
                 onClick automáticamente
               </li>
             </ol>
