@@ -130,7 +130,7 @@
               Los elementos se pueden anidar, es decir, colocar elementos dentro de otro elemento.
             </li>
             <li>
-              Se debe siempre cerrar los tags aninados en orden inverso al que comienzan.
+              Se debe siempre cerrar las etiquetas anidadas en orden inverso al que comienzan.
               Es decir, en el ejemplo debajo, el tag &lt;em&gt cierra primero ya que fue el último tag en comenzar. 
             </li>
           </ul>
@@ -1349,6 +1349,14 @@
             link.href = 'https://rootstrap.github.io/workshop-js-anima';
           </code></pre>
 
+        </section>
+
+        <section>
+          Utilizando la propiedad innerHTML también podemos acceder al contenido de un elemento y/o actualizarlo. innerHTML devuelve un String que representa el contenido HTML de un elemento.
+          <pre><code data-line-numbers data-trim class="lang-javascript">
+            const parrafo = document.getElementById('parrafo');
+            parrafo.innerHTML = <i>Ahora el contenido de mi párrafo es cursiva</i>;
+          </code></pre>
         </section>
 
         <section>
