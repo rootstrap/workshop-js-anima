@@ -120,7 +120,7 @@
           <section>
             <p>
               Otra forma de detectar el evento <b>click</b> es usando la
-              propiedad <b>onClick</b> de los elementos
+              propiedad <b>onClick</b> de los elementos:
             </p>
             <pre><code data-line-numbers data-trim class="language-javascript"><script type="text/template">
               <button onClick={this.manejadorClick}>
@@ -129,7 +129,7 @@
             </script></code></pre>
             <p>
               <b>manejadorClick</b> es una función definida dentro de la clase.
-              Para que funcione, es necesario hacer un bind en el constructor
+              Para que funcione, es necesario hacer un bind en el constructor:
             </p>
             <pre><code data-line-numbers data-trim class="language-javascript">
               this.manejadorClick = this.manejadorClick.bind(this);
@@ -139,7 +139,7 @@
           <section>
             <p>
               Una forma de evitar hacer el bind, es utilizar
-              <b>Arrow Functions</b>
+              <b>Arrow Functions</b>:
             </p>
             <pre><code data-line-numbers data-trim class="language-javascript"><script type="text/template">
               <button onClick={() => this.manejadorClick()}>
@@ -148,7 +148,7 @@
             </script></code></pre>
             <p>
               Este código es equivalente al anterior, ahorrando la necesidad de
-              hacer el bind en el constructor
+              hacer el bind en el constructor.
             </p>
             <p>Por esto, de ahora en adelante, usaremos arrow functions.</p>
           </section>
@@ -157,7 +157,7 @@
             <h4>Pasar parámetros a los manejadores</h4>
             <p>
               Muchas veces vamos a precisar mandar parámetros extra a la función
-              que maneja el evento, por ejemplo, un identificador
+              que maneja el evento, por ejemplo, un identificador.
             </p>
             <pre><code data-line-numbers data-trim class="lang-javascript"><script type="text/template">
               <button onClick={(e) => this.eliminarFila(id, e)}>Eliminar Fila</button>
@@ -203,14 +203,14 @@
             </script></code></pre>
             <p>
               y queremos que se vea uno u otro dependiendo si el usuario esta
-              registrado o es un invitado
+              registrado o es un invitado.
             </p>
           </section>
 
           <section>
             <p>
               Vamos a crear un un componente <b>Bienvenida</b> que mueste el
-              mensaje adecuado
+              mensaje adecuado:
             </p>
             <pre><code data-line-numbers data-trim><script type="text/template">
               function Bienvenida(props) {
@@ -232,7 +232,7 @@
           <section>
             <p>
               Una alternativa al operador <b>if</b> es utilizar el
-              <b>Operador Condicional Ternario</b> que brinda javascript.
+              <b>Operador Condicional Ternario</b> que brinda javascript:
             </p>
             <pre><code data-line-numbers data-trim><script type="text/template">
               function Bienvenida(props) {
@@ -249,16 +249,16 @@
             </script></code></pre>
             <p>
               Este código es equivalente al recién visto, donde la condición se
-              encuentra antes del símbolo "?"
+              encuentra antes del símbolo "?".
             </p>
           </section>
 
           <section>
             <h4>Variables de Elementos</h4>
-            <p>Se pueden usar variables para almacenar elementos</p>
+            <p>Se pueden usar variables para almacenar elementos.</p>
             <p>
               Sirve para renderizar condicionalmente una parte del componente
-              mientras el resto del resultado no cambia
+              mientras el resto del resultado no cambia.
             </p>
           </section>
 
@@ -289,38 +289,39 @@
           <section>
             <p>
               Vamos a crear un componente con estado, llamado
-              <b>ControlSesion</b>
+              <b>ControlSesion</b>.
             </p>
             <p>
               El componente va a renderizar <b>BotonIniciarSesion</b> o
               <b>BotonCerrarSesion</b> dependiendo de su estado actual. También
-              va a renderizar <b>Bienvenida</b> del ejemplo anterior:
+              va a renderizar <b>Bienvenida</b> del ejemplo anterior.
             </p>
           </section>
 
           <section>
-            <pre><code data-line-numbers data-trim><script type="text/template">
+            <pre><code data-line-numbers data-trim class="lang-java"><script type="text/template">
               class ControlSesion extends React.Component {
                 constructor(props) {
                   super(props);
-                  this.manejadorIniciarSesion = this.manejadorIniciarSesion.bind(this);
-                  this.manejadorCerrarSesion = this.manejadorCerrarSesion.bind(this);
                   this.state = {estaRegistrado: false};
                 }
+
                 manejadorIniciarSesion() {
                   this.setState({estaRegistrado: true});
                 }
+
                 manejadorCerrarSesion() {
                   this.setState({estaRegistrado: false});
                 }
+
                 render() {
                   const estaRegistrado = this.state.estaRegistrado;
                   let boton;
-                  if (estaRegistrado) {
-                    boton = <LogoutButton onClick={this.manejadorCerrarSesion} />;
-                  } else {
-                    boton = <BotonCerrarSesion onClick={this.manejadorIniciarSesion} />;
-                  }
+                  estaRegistrado ?
+                    boton = <LogoutButton onClick={() => this.manejadorCerrarSesion()} />;
+                  :
+                    boton = <BotonCerrarSesion onClick={() => this.manejadorIniciarSesion()} />;
+
                   return (
                     <div>
                       <Bienvenida estaRegistrado={estaRegistrado} />
@@ -329,6 +330,7 @@
                   );
                 }
               }
+              
               ReactDOM.render(
                 <ControlSesion />,
                 document.getElementById('root')
@@ -340,7 +342,7 @@
             <p>
               Declarar una variable y usar if es una buena forma de renderizar
               condicionalmente un componente pero también hay formas de hacer
-              condiciones en una sola línea en JSX, como explico a continuación
+              condiciones en una sola línea en JSX, como explico a continuación.
             </p>
           </section>
         </section>
