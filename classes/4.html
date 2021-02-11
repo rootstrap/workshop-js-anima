@@ -98,26 +98,7 @@
           <section>
             <h4>Detectar Eventos en React</h4>
             <p>
-              Una forma de detectar el evento <b>click</b> es usando la
-              propiedad <b>onClick</b> de los elementos
-            </p>
-            <pre><code data-line-numbers data-trim><script type="text/template">
-              <button onClick={this.manejadorClick}>
-                PRESIONAME
-              </button>
-            </script></code></pre>
-            <p>
-              <b>manejadorClick</b> es una función definida dentro de la clase.
-              Para que funcione, es necesario hacer un bind en el constructor
-            </p>
-            <pre><code data-line-numbers data-trim class="language-javascript">
-              this.manejadorClick = this.manejadorClick.bind(this);
-            </code></pre>
-          </section>
-
-          <section>
-            <p>
-              Otra forma de detectar un evento es usando <b>listeners</b>, donde
+              Una forma de detectar un evento es usando <b>listeners</b>, donde
               se espera a que pase un determinado evento en un determinado
               elemento.
             </p>
@@ -137,21 +118,54 @@
           </section>
 
           <section>
+            <p>
+              Otra forma de detectar el evento <b>click</b> es usando la
+              propiedad <b>onClick</b> de los elementos
+            </p>
+            <pre><code data-line-numbers data-trim class="language-javascript"><script type="text/template">
+              <button onClick={this.manejadorClick}>
+                PRESIONAME
+              </button>
+            </script></code></pre>
+            <p>
+              <b>manejadorClick</b> es una función definida dentro de la clase.
+              Para que funcione, es necesario hacer un bind en el constructor
+            </p>
+            <pre><code data-line-numbers data-trim class="language-javascript">
+              this.manejadorClick = this.manejadorClick.bind(this);
+            </code></pre>
+          </section>
+
+          <section>
+            <p>
+              Una forma de evitar hacer el bind, es utilizar
+              <b>Arrow Functions</b>
+            </p>
+            <pre><code data-line-numbers data-trim class="language-javascript"><script type="text/template">
+              <button onClick={() => this.manejadorClick()}>
+                PRESIONAME
+              </button>
+            </script></code></pre>
+            <p>
+              Este código es equivalente al anterior, ahorrando la necesidad de
+              hacer el bind en el constructor
+            </p>
+            <p>Por esto, de ahora en adelante, usaremos arrow functions.</p>
+          </section>
+
+          <section>
             <h4>Pasar parámetros a los manejadores</h4>
             <p>
               Muchas veces vamos a precisar mandar parámetros extra a la función
               que maneja el evento, por ejemplo, un identificador
             </p>
-            <pre><code data-line-numbers data-trim><script type="text/template">
-              <button onClick={() => this.eliminarFila(id)}>Eliminar Fila</button>
+            <pre><code data-line-numbers data-trim class="lang-javascript"><script type="text/template">
+              <button onClick={(e) => this.eliminarFila(id, e)}>Eliminar Fila</button>
             </script></code></pre>
             <p>La función <b>eliminarFila</b> va a recibir 2 parámetros:</p>
             <ol>
               <li><b>id:</b> identificador de la fila</li>
-              <li>
-                <b>evento: </b>no es necesario especificarlo, lo envía el
-                onClick automáticamente
-              </li>
+              <li><b>e: </b> el evento ocurrido</li>
             </ol>
           </section>
         </section>
