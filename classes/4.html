@@ -101,11 +101,11 @@
               Una forma de detectar el evento <b>click</b> es usando la
               propiedad <b>onClick</b> de los elementos
             </p>
-            <pre><code data-line-numbers data-trim class="language-html">
+            <pre><code data-line-numbers data-trim><script type="text/template">
               <button onClick={this.manejadorClick}>
                 PRESIONAME
               </button>
-            </code></pre>
+            </script></code></pre>
             <p>
               <b>manejadorClick</b> es una función definida dentro de la clase.
               Para que funcione, es necesario hacer un bind en el constructor
@@ -137,47 +137,14 @@
           </section>
 
           <section>
-            <p>
-              Cuando se usan <b>listeners</b>, hay que agregarlos cuando se
-              monta el componente y removerlos al desmontarlo.
-            </p>
-            <pre><code data-line-numbers data-trim class="lang-javascript">
-              import React, { Component } from 'react';
-              import ReactDOM from 'react-dom';
-
-              class MiComponente extends Component {
-                constructor(props) {
-                  super(props);
-
-                  this.manejadorEvento = this.manejadorEvento.bind(this);
-                }
-
-                manejadorEvento(evento) {
-                  // el preventDefault es para evitar el comportamiento por defecto
-                  evento.preventDefault();
-                  console.log('Ocurrió el evento');
-                }
-
-                componentDidMount() {
-                  ReactDOM.findDOMNode(this).addEventListener('evento', this.manejadorEvento);
-                }
-
-                componentWillUnmount() {
-                  ReactDOM.findDOMNode(this).removeEventListener('evento', this.manejadorEvento);
-                }
-              }
-            </code></pre>
-          </section>
-
-          <section>
             <h4>Pasar parámetros a los manejadores</h4>
             <p>
               Muchas veces vamos a precisar mandar parámetros extra a la función
               que maneja el evento, por ejemplo, un identificador
             </p>
-            <pre><code data-line-numbers data-trim class="language-javascript">
-              "<button onClick={this.eliminarFila.bind(this,id)}>Eliminar Fila</button>"
-            </code></pre>
+            <pre><code data-line-numbers data-trim><script type="text/template">
+              <button onClick={() => this.eliminarFila(id)}>Eliminar Fila</button>
+            </script></code></pre>
             <p>La función <b>eliminarFila</b> va a recibir 2 parámetros:</p>
             <ol>
               <li><b>id:</b> identificador de la fila</li>
@@ -192,6 +159,176 @@
         <!-- Conditional Rendering -->
         <section>
           <h3>Renderizado Condicional</h3>
+
+          <section>
+            <p>
+              En React, se pueden crear distintos componentes que encapsulen el
+              comportamiento que se quiere.
+            </p>
+            <p>
+              Se puede renderizar algunos de ellos, dependiendo del estado de la
+              aplicación.
+            </p>
+            <p>
+              Esto hace que no siempre se vea lo mismo, sino que dependiendo del
+              estado de la aplicación se va a ver un componente u otro.
+            </p>
+          </section>
+
+          <section>
+            <p>Para hacer esto, se puede usar el operador <b>if</b></p>
+            <p>Supongamos que tenemos estos dos componentes:</p>
+            <pre><code data-line-numbers data-trim><script type="text/template">
+              function BienvenidaUsuario(props) {
+                return <h1>Bienvenido de vuelta!</h1>;
+              }
+              
+              function BienvenidaInvitado(props) {
+                return <h1>Por favor registrate.</h1>;
+              }
+            </script></code></pre>
+            <p>
+              y queremos que se vea uno u otro dependiendo si el usuario esta
+              registrado o es un invitado
+            </p>
+          </section>
+
+          <section>
+            <p>
+              Vamos a crear un un componente <b>Bienvenida</b> que mueste el
+              mensaje adecuado
+            </p>
+            <pre><code data-line-numbers data-trim><script type="text/template">
+              function Bienvenida(props) {
+                const estaRegistrado = props.estaRegistrado;
+                if (estaRegistrado) {
+                  return <BienvenidaUsuario />;
+                }
+                return <BienvenidaInvitado />;
+              }
+              
+              ReactDOM.render(
+                // se le dice si el usuario está registrado o no
+                <Bienvenida estaRegistrado={false} />,
+                document.getElementById('root')
+              );
+            </script></code></pre>
+          </section>
+
+          <section>
+            <p>
+              Una alternativa al operador <b>if</b> es utilizar el
+              <b>Operador Condicional Ternario</b> que brinda javascript.
+            </p>
+            <pre><code data-line-numbers data-trim><script type="text/template">
+              function Bienvenida(props) {
+                const estaRegistrado = props.estaRegistrado;
+
+                return estaRegistrado ? <BienvenidaUsuario /> : <BienvenidaInvitado />;
+              }
+              
+              ReactDOM.render(
+                // se le dice si el usuario está registrado o no
+                <Bienvenida estaRegistrado={false} />,
+                document.getElementById('root')
+              );
+            </script></code></pre>
+            <p>
+              Este código es equivalente al recién visto, donde la condición se
+              encuentra antes del símbolo "?"
+            </p>
+          </section>
+
+          <section>
+            <h4>Variables de Elementos</h4>
+            <p>Se pueden usar variables para almacenar elementos</p>
+            <p>
+              Sirve para renderizar condicionalmente una parte del componente
+              mientras el resto del resultado no cambia
+            </p>
+          </section>
+
+          <section>
+            <p>
+              Supongamos que tenemos dos botones, para iniciar y cerrar sesión
+              respectivamente:
+            </p>
+            <pre><code data-line-numbers data-trim><script type="text/template">
+              function BotonIniciarSesion(props) {
+                return (
+                  <button onClick={props.onClick}>
+                    Iniciar Sesión
+                  </button>
+                );
+              }
+              
+              function BotonCerrarSesion(props) {
+                return (
+                  <button onClick={props.onClick}>
+                    Cerrar Sesión
+                  </button>
+                );
+              }
+            </script></code></pre>
+          </section>
+
+          <section>
+            <p>
+              Vamos a crear un componente con estado, llamado
+              <b>ControlSesion</b>
+            </p>
+            <p>
+              El componente va a renderizar <b>BotonIniciarSesion</b> o
+              <b>BotonCerrarSesion</b> dependiendo de su estado actual. También
+              va a renderizar <b>Bienvenida</b> del ejemplo anterior:
+            </p>
+          </section>
+
+          <section>
+            <pre><code data-line-numbers data-trim><script type="text/template">
+              class ControlSesion extends React.Component {
+                constructor(props) {
+                  super(props);
+                  this.manejadorIniciarSesion = this.manejadorIniciarSesion.bind(this);
+                  this.manejadorCerrarSesion = this.manejadorCerrarSesion.bind(this);
+                  this.state = {estaRegistrado: false};
+                }
+                manejadorIniciarSesion() {
+                  this.setState({estaRegistrado: true});
+                }
+                manejadorCerrarSesion() {
+                  this.setState({estaRegistrado: false});
+                }
+                render() {
+                  const estaRegistrado = this.state.estaRegistrado;
+                  let boton;
+                  if (estaRegistrado) {
+                    boton = <LogoutButton onClick={this.manejadorCerrarSesion} />;
+                  } else {
+                    boton = <BotonCerrarSesion onClick={this.manejadorIniciarSesion} />;
+                  }
+                  return (
+                    <div>
+                      <Bienvenida estaRegistrado={estaRegistrado} />
+                      {boton}
+                    </div>
+                  );
+                }
+              }
+              ReactDOM.render(
+                <ControlSesion />,
+                document.getElementById('root')
+              );
+            </script></code></pre>
+          </section>
+
+          <section>
+            <p>
+              Declarar una variable y usar if es una buena forma de renderizar
+              condicionalmente un componente pero también hay formas de hacer
+              condiciones en una sola línea en JSX, como explico a continuación
+            </p>
+          </section>
         </section>
       </div>
     </div>
