@@ -247,10 +247,8 @@
                 document.getElementById('root')
               );
             </script></code></pre>
-            <p>
-              Este código es equivalente al recién visto, donde la condición se
-              encuentra antes del símbolo "?".
-            </p>
+            <p>Este código es equivalente al recién visto, donde:</p>
+            <p>condición ? verdadero : falso</p>
           </section>
 
           <section>
@@ -330,19 +328,68 @@
                   );
                 }
               }
-              
+
               ReactDOM.render(
                 <ControlSesion />,
                 document.getElementById('root')
               );
             </script></code></pre>
+            <p>
+              Notar que usamos las arrow functions para evitar el bind y en
+              lugar del if usamos el Operador Ternario.
+            </p>
           </section>
 
           <section>
             <p>
               Declarar una variable y usar if es una buena forma de renderizar
               condicionalmente un componente pero también hay formas de hacer
-              condiciones en una sola línea en JSX, como explico a continuación.
+              condiciones en una sola línea en JSX.
+            </p>
+            <p>
+              Para incluir expresiones en JSX hay que envolver el código con las
+              llaves "{ }". Para incluir condicionalmente un elemento puede ser
+              útil usar el operador lógico <b>&&</b> de JavaScript.
+            </p>
+          </section>
+
+          <section>
+            <pre><code data-line-numbers data-trim class="lang-java"><script type="text/template">
+              function BuzonCorreo(props) {
+                const mensajesSinLeer = props.mensajesSinLeer;
+                return (
+                  <div>
+                    <h1>Hola!</h1>
+                    {unreadMessages.length > 0 &&
+                      <h2>
+                        Tenés {mensajesSinLeer.length} mensajes sin leer.
+                      </h2>
+                    }
+                  </div>
+                );
+              }
+              
+              const messages = ['React', 'Re: React', 'Re:Re: React'];
+              ReactDOM.render(
+                <BuzonCorreo unreadMessages={messages} />,
+                document.getElementById('root')
+              );
+            </script></code></pre>
+            <p>
+              En este caso, solo se muestra la cantidad de mensajes sin leer si
+              se tiene al menos 1 mensaje sin leer.
+            </p>
+          </section>
+
+          <section>
+            <p>Esto funciona porque en JavaScript:</p>
+            <ul>
+              <li><b>true && expresión</b> = expresión</li>
+              <li><b>false && expresión</b> = false</li>
+            </ul>
+            <p>
+              Por eso, si la condición es true, el elemento justo después de &&
+              aparecerá en el resultado. Si es false, React lo ignorará.
             </p>
           </section>
         </section>
