@@ -295,9 +295,9 @@
                   const estaRegistrado = this.state.estaRegistrado;
                   let boton;
                   estaRegistrado ?
-                    boton = <LogoutButton onClick={() => this.manejadorCerrarSesion()} />;
+                    boton = <BotonCerrarSesion onClick={() => this.manejadorCerrarSesion()} />;
                   :
-                    boton = <BotonCerrarSesion onClick={() => this.manejadorIniciarSesion()} />;
+                    boton = <BotonIniciarSesion onClick={() => this.manejadorIniciarSesion()} />;
 
                   return (
                     <div>
