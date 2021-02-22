@@ -659,7 +659,7 @@
               }
             </script></code></pre>
             <p>
-              y queremos que se vea uno u otro dependiendo si el usuario esta
+              y queremos que se vea uno u otro dependiendo si el usuario está
               registrado o es un invitado.
             </p>
           </section>
@@ -773,7 +773,7 @@
                   const estaRegistrado = this.state.estaRegistrado;
                   let boton;
                   estaRegistrado ?
-                    boton = <BotonCerrarSesion onClick={() => this.manejadorCerrarSesion()} />;
+                    boton = <BotonCerrarSesion onClick={() => this.manejadorCerrarSesion()} />
                   :
                     boton = <BotonIniciarSesion onClick={() => this.manejadorIniciarSesion()} />;
 
